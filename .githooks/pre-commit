@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Collect staged JS/TS files
-FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|ts|tsx\svelte)$')
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|ts|tsx|svelte)$')
 [ -z "$FILES" ] && exit 0
 
 echo "Formatting with Prettier..."
@@ -20,7 +20,7 @@ if [ $STATUS -ne 0 ]; then
 fi
 
 echo "Running TypeScript checks..."
-bun --yes run check $FILES
+bun --yes run check
 STATUS2=$?
 
 if [ $STATUS2 -ne 0 ]; then
