@@ -2,7 +2,7 @@
 
 I am using [Bun](https://bun.sh), because it's much more faster, but you can do everything without Bun.
 
-There is a .githooks folder with automated scripts that run. There is a pre-commit that runs checks automaticly, but you need to set it up one time, to use it. Run:
+There is a .githooks folder with automated scripts that run. There is a pre-commit that runs checks automaticly, but you need to set it up one time, to use it. BUT you need Bun for this!!! Run:
 
 ```bash
 git config core.hooksPath .githooks
