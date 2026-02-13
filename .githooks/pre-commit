@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Collect staged JS/TS files
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|ts|tsx)$')
+[ -z "$FILES" ] && exit 0
+
+echo "Formatting with Prettier..."
+npx --yes prettier --write $FILES
+
+# Re-stage files that Prettier changed
+echo "$FILES" | xargs git add
+
+echo "Linting with ESLint..."
+npx --yes eslint $FILES
+STATUS=$?
+
+if [ $STATUS -ne 0 ]; then
+  echo "ESLint found issues. Fix them or commit with --no-verify if needed."
+  exit $STATUS
+fi
+
+echo "Pre-commit checks passed."
+exit 0
