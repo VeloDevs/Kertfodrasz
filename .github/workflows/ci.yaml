@@ -1,0 +1,31 @@
+# .github/workflows/ci.yml
+name: Quality Check
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependecies
+        run: bun ci
+
+      - name: Build test
+        run: bun run build
+
+      - name: Type check
+        run: bun run check
+
+      - name: Lint check
+        run: bun run lint

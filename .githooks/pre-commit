@@ -5,18 +5,27 @@ FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|ts|tsx\
 [ -z "$FILES" ] && exit 0
 
 echo "Formatting with Prettier..."
-npx --yes prettier --write $FILES
+bun --yes prettier --write $FILES
 
 # Re-stage files that Prettier changed
 echo "$FILES" | xargs git add
 
 echo "Linting with ESLint..."
-npx --yes eslint $FILES
+bun --yes eslint $FILES
 STATUS=$?
 
 if [ $STATUS -ne 0 ]; then
   echo "ESLint found issues. Fix them or commit with --no-verify if needed."
   exit $STATUS
+fi
+
+echo "Running TypeScript checks..."
+bun --yes run check $FILES
+STATUS2=$?
+
+if [ $STATUS2 -ne 0 ]; then
+  echo "TypeScript checks failed. Fix them or commit with --no-verify if needed."
+  exit $STATUS2
 fi
 
 echo "Pre-commit checks passed."

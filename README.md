@@ -1,42 +1,84 @@
-# sv
+# Kerfodrász weboldal fejlesztési útmutató
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+I am using [Bun](https://bun.sh), because it's much more faster, but you can do everything without Bun.
 
-## Creating a project
+There is a .githooks folder with automated scripts that run. There is a pre-commit that runs checks automaticly, but you need to set it up one time, to use it. Run:
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
+```bash
+git config core.hooksPath .githooks
 ```
 
-To recreate this project with the same configuration:
+## First steps:
 
-```sh
-# recreate this project
-bun x sv create --template minimal --types ts --add prettier eslint tailwindcss="plugins:none" --install bun kertfodrasz
+### 1. Clone the repo
+
+### 2. Install dependecies
+
+```bash
+bun install
+# or use npm
+npm install
 ```
 
-## Developing
+### Start DEV server
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```bash
+bun run dev
+# or use npm
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Workflow
 
-To create a production version of your app:
+### 1. Choose an issue you want to work on.
 
-```sh
+### 2. Pull main branch
+
+```bash
+git checkout main
+git pull origin main
+```
+
+### 3. Make new branch
+
+```bash
+git checkout -b feature/[whatever]
+```
+
+### 4. Code
+
+```bash
+# Test locally
+bun run dev
+```
+
+### 5. There is automatic checks pre-commmit using GitHub hooks, but you need to configure them to make them run automaticly if you dont want that use these befere commiting:
+
+```bash
+bun run lint
+# or
+npm run lint
+
+bun run check
+# or
+npm run check
+
+bun run build
+# or
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+### 6. Commit
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+git add .
+git commit -m "[Usefull message]"
+```
+
+### 7. Push to your branch
+
+```bash
+git push origin feature/[whatever]
+```
+
+### 8. Open a pull request
