@@ -42,7 +42,7 @@
 						>
 					</li>
 					<li class="flex items-center gap-3">📍 Kozármisleny, Magyarország</li>
-					<li class="flex items-center gap-3">📞 +36 20 520 9276</li>
+					<a href="tel:+36205209276"><li class="flex items-center gap-3">📞 +36 20 520 9276</li></a>
 				</ul>
 			</div>
 		</div>
@@ -50,7 +50,7 @@
 		<div
 			class="mt-16 flex flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 md:flex-row"
 		>
-			<p class="text-xs">© 2025 Minden jog fenntartva.</p>
+			<p class="text-xs">© 2026 Minden jog fenntartva.</p>
 			<div class="flex space-x-8 text-xs">
 				<a href="/" class="transition-colors hover:text-white">Adatkezelési tájékoztató</a>
 				<a href="/" class="transition-colors hover:text-white">ÁSZF</a>
@@ -61,7 +61,7 @@
 <div class="hidden bg-[#137d38] py-1 text-sm text-white md:block">
 	<div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<div class="flex w-full items-center justify-center">
-			<span>© Kertfodrász 2013-2023</span>
+			<span>© Kertfodrász 2013-2026</span>
 		</div>
 	</div>
 </div>

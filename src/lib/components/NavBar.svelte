@@ -58,7 +58,7 @@
 
 		<div class="flex items-center gap-4">
 			<a
-				href="https://facebook.com"
+				href="https://www.facebook.com/Kertfodrasz"
 				target="_blank"
 				aria-label="Facebook oldalunk"
 				class="transition hover:text-gray-200"
@@ -79,7 +79,7 @@
 			</a>
 
 			<a
-				href="https://instagram.com"
+				href="https://www.instagram.com/kertfodrasz/	"
 				target="_blank"
 				aria-label="Instagram oldalunk"
 				class="transition hover:text-gray-200"
@@ -172,29 +172,40 @@
 	{#if isMobileMenuOpen}
 		<div
 			transition:slide={{ duration: 300 }}
-			class="dark:bg-background-dark overflow-hidden border-b border-gray-100 bg-white md:hidden dark:border-gray-800"
+			class=" overflow-hidden bg-white md:hidden dark:border-gray-800"
 		>
 			<div class="flex flex-col gap-1 px-4 pt-2 pb-6">
 				<a
-					href="/services"
+					href="/"
 					class="mobile-link"
-					class:active={page.url.pathname.includes('services')}
-					onclick={closeMenu}>Services</a
+					class:active={page.url.pathname.includes('homepage')}
+					onclick={closeMenu}>Kezdőoldal</a
 				>
 				<a
-					href="/portfolio"
+					href="/references"
 					class="mobile-link"
 					class:active={page.url.pathname.includes('portfolio')}
-					onclick={closeMenu}>Portfolio</a
+					onclick={closeMenu}>Referenciák</a
+				>
+				<a
+					href="/plants"
+					class="mobile-link"
+					class:active={page.url.pathname.includes('plants')}
+					onclick={closeMenu}>Növények</a
+				>
+				<a
+					href="/blog"
+					class="mobile-link"
+					class:active={page.url.pathname.includes('blog')}
+					onclick={closeMenu}>Blog</a
 				>
 				<a
 					href="/contact"
 					class="mobile-link"
 					class:active={page.url.pathname.includes('contact')}
-					onclick={closeMenu}>Contact</a
+					onclick={closeMenu}>Kapcsolat</a
 				>
-
-				<div class="my-4 border-t border-gray-100 dark:border-gray-100"></div>
+				<!-- <div class="my-4 border-t border-gray-100 dark:border-gray-100"></div> -->
 			</div>
 		</div>
 	{/if}
