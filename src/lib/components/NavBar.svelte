@@ -58,6 +58,26 @@
 
 		<div class="flex items-center gap-4">
 			<a
+				href="https://www.tiktok.com/@Kertfodrasz"
+				target="_blank"
+				aria-label="TikTok oldalunk"
+				class="transition hover:text-gray-200"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="18"
+					height="18"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+				</svg>
+			</a>
+			<a
 				href="https://www.facebook.com/Kertfodrasz"
 				target="_blank"
 				aria-label="Facebook oldalunk"
@@ -130,10 +150,6 @@
 					Növények
 					<span class="underline-animation"></span>
 				</a>
-				<a href="/blog" class="nav-link" class:active={page.url.pathname.includes('blog')}>
-					Blog
-					<span class="underline-animation"></span>
-				</a>
 				<a href="/contact" class="nav-link" class:active={page.url.pathname.includes('contact')}>
 					Kapcsolat
 					<span class="underline-animation"></span>
@@ -192,12 +208,6 @@
 					class="mobile-link"
 					class:active={page.url.pathname.includes('plants')}
 					onclick={closeMenu}>Növények</a
-				>
-				<a
-					href="/blog"
-					class="mobile-link"
-					class:active={page.url.pathname.includes('blog')}
-					onclick={closeMenu}>Blog</a
 				>
 				<a
 					href="/contact"
