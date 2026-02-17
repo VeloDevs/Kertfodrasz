@@ -102,7 +102,9 @@
 							</svg>
 						</div>
 						<dt class="sr-only">Email</dt>
-						<dd class="ml-3 text-base"><a href="mailto:kertfodrasz@gmail.com">kertfodrasz@gmail.com</a></dd>
+						<dd class="ml-3 text-base">
+							<a href="mailto:kertfodrasz@gmail.com">kertfodrasz@gmail.com</a>
+						</dd>
 					</div>
 
 					<div class="flex items-start">
