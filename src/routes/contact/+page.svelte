@@ -1,5 +1,5 @@
 <script>
-	import { PUBLIC_SITE_KEY, PUBLIC_SITE_URL } from '$env/static/public';
+	// import { PUBLIC_SITE_KEY, PUBLIC_SITE_URL } from '$env/static/public';
 	let name = '';
 	let email = '';
 	let message = '';
@@ -20,12 +20,12 @@
 		};
 
 		try {
-			const response = await fetch(PUBLIC_SITE_URL, {
+			const response = await fetch('http://127.0.0.1:8000/api/contact', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 					Accept: 'application/json',
-					'X-Site-Key': PUBLIC_SITE_KEY
+					'X-Site-Key': 'velo_0f3hmHCfCHo8RcubKkvqc0niEdz3BlVC'
 				},
 				body: JSON.stringify(formData)
 			});
