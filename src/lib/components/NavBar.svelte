@@ -141,7 +141,7 @@
 				<a
 					href="/references"
 					class="nav-link"
-					class:active={page.url.pathname.includes('portfolio')}
+					class:active={page.url.pathname.includes('references')}
 				>
 					Referenciák
 					<span class="underline-animation"></span>
