@@ -114,27 +114,27 @@
 			</div>
 
 			<div class="hidden items-center space-x-2 md:flex">
-				<a href="/" class="nav-link" class:active={page.url.pathname.includes('homepage')}>
+				<a href="/" class="nav-link" class:active={page.url.pathname === '/'}>
 					Kezdőoldal
 					<span class="underline-animation"></span>
 				</a>
 				<a
 					href="/references"
 					class="nav-link"
-					class:active={page.url.pathname.includes('portfolio')}
+					class:active={page.url.pathname.startsWith('/references')}
 				>
 					Referenciák
 					<span class="underline-animation"></span>
 				</a>
-				<a href="/plants" class="nav-link" class:active={page.url.pathname.includes('plants')}>
+				<a href="/plants" class="nav-link" class:active={page.url.pathname.startsWith('/plants')}>
 					Növények
 					<span class="underline-animation"></span>
 				</a>
-				<a href="/blog" class="nav-link" class:active={page.url.pathname.includes('blog')}>
+				<a href="/blog" class="nav-link" class:active={page.url.pathname.startsWith('/blog')}>
 					Blog
 					<span class="underline-animation"></span>
 				</a>
-				<a href="/contact" class="nav-link" class:active={page.url.pathname.includes('contact')}>
+				<a href="/contact" class="nav-link" class:active={page.url.pathname.startsWith('/contact')}>
 					Kapcsolat
 					<span class="underline-animation"></span>
 				</a>
@@ -175,23 +175,32 @@
 			class="dark:bg-background-dark overflow-hidden border-b border-gray-100 bg-white md:hidden dark:border-gray-800"
 		>
 			<div class="flex flex-col gap-1 px-4 pt-2 pb-6">
-				<a
-					href="/services"
-					class="mobile-link"
-					class:active={page.url.pathname.includes('services')}
-					onclick={closeMenu}>Services</a
+				<a href="/" class="mobile-link" class:active={page.url.pathname === '/'} onclick={closeMenu}
+					>Kezdőoldal</a
 				>
 				<a
-					href="/portfolio"
+					href="/references"
 					class="mobile-link"
-					class:active={page.url.pathname.includes('portfolio')}
-					onclick={closeMenu}>Portfolio</a
+					class:active={page.url.pathname.startsWith('/references')}
+					onclick={closeMenu}>Referenciák</a
+				>
+				<a
+					href="/plants"
+					class="mobile-link"
+					class:active={page.url.pathname.startsWith('/plants')}
+					onclick={closeMenu}>Növények</a
+				>
+				<a
+					href="/blog"
+					class="mobile-link"
+					class:active={page.url.pathname.startsWith('/blog')}
+					onclick={closeMenu}>Blog</a
 				>
 				<a
 					href="/contact"
 					class="mobile-link"
-					class:active={page.url.pathname.includes('contact')}
-					onclick={closeMenu}>Contact</a
+					class:active={page.url.pathname.startsWith('/contact')}
+					onclick={closeMenu}>Kapcsolat</a
 				>
 
 				<div class="my-4 border-t border-gray-100 dark:border-gray-100"></div>

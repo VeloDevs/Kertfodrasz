@@ -13,13 +13,9 @@
 				<h4 class="mb-6 font-bold tracking-wider text-white uppercase">Gyorslinkek</h4>
 				<ul class="space-y-4">
 					<li><a href="/" class="transition-colors hover:text-white">Kezdőoldal</a></li>
-					<li><a href="/services" class="transition-colors hover:text-white">Referenciák</a></li>
-					<li>
-						<a href="/portfolio" class="transition-colors hover:text-white">Növények</a>
-					</li>
-					<li>
-						<a href="/" class="transition-colors hover:text-white">Blog</a>
-					</li>
+					<li><a href="/references" class="transition-colors hover:text-white">Referenciák</a></li>
+					<li><a href="/plants" class="transition-colors hover:text-white">Növények</a></li>
+					<li><a href="/blog" class="transition-colors hover:text-white">Blog</a></li>
 				</ul>
 			</div>
 
