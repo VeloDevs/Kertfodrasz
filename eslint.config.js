@@ -24,7 +24,7 @@ export default defineConfig(
 			'no-undef': 'off',
 
 			// EZT A SORT ADTAM HOZZÁ:
-			// Kikapcsolja a szigorú link-ellenőrzést (mivel kivettük a Paraglide-ot)
+			// Kikapcsolja a szigorú link-ellenőrzést
 			'svelte/no-navigation-without-resolve': 'off'
 		}
 	},

@@ -58,7 +58,27 @@
 
 		<div class="flex items-center gap-4">
 			<a
-				href="https://facebook.com"
+				href="https://www.tiktok.com/@Kertfodrasz"
+				target="_blank"
+				aria-label="TikTok oldalunk"
+				class="transition hover:text-gray-200"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="18"
+					height="18"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+				</svg>
+			</a>
+			<a
+				href="https://www.facebook.com/Kertfodrasz"
 				target="_blank"
 				aria-label="Facebook oldalunk"
 				class="transition hover:text-gray-200"
@@ -79,7 +99,7 @@
 			</a>
 
 			<a
-				href="https://instagram.com"
+				href="https://www.instagram.com/kertfodrasz/	"
 				target="_blank"
 				aria-label="Instagram oldalunk"
 				class="transition hover:text-gray-200"
@@ -114,27 +134,23 @@
 			</div>
 
 			<div class="hidden items-center space-x-2 md:flex">
-				<a href="/" class="nav-link" class:active={page.url.pathname === '/'}>
+				<a href="/" class="nav-link" class:active={page.url.pathname.includes('homepage')}>
 					Kezdőoldal
 					<span class="underline-animation"></span>
 				</a>
 				<a
 					href="/references"
 					class="nav-link"
-					class:active={page.url.pathname.startsWith('/references')}
+					class:active={page.url.pathname.includes('references')}
 				>
 					Referenciák
 					<span class="underline-animation"></span>
 				</a>
-				<a href="/plants" class="nav-link" class:active={page.url.pathname.startsWith('/plants')}>
+				<a href="/plants" class="nav-link" class:active={page.url.pathname.includes('plants')}>
 					Növények
 					<span class="underline-animation"></span>
 				</a>
-				<a href="/blog" class="nav-link" class:active={page.url.pathname.startsWith('/blog')}>
-					Blog
-					<span class="underline-animation"></span>
-				</a>
-				<a href="/contact" class="nav-link" class:active={page.url.pathname.startsWith('/contact')}>
+				<a href="/contact" class="nav-link" class:active={page.url.pathname.includes('contact')}>
 					Kapcsolat
 					<span class="underline-animation"></span>
 				</a>
@@ -172,38 +188,34 @@
 	{#if isMobileMenuOpen}
 		<div
 			transition:slide={{ duration: 300 }}
-			class="dark:bg-background-dark overflow-hidden border-b border-gray-100 bg-white md:hidden dark:border-gray-800"
+			class=" overflow-hidden bg-white md:hidden dark:border-gray-800"
 		>
 			<div class="flex flex-col gap-1 px-4 pt-2 pb-6">
-				<a href="/" class="mobile-link" class:active={page.url.pathname === '/'} onclick={closeMenu}
-					>Kezdőoldal</a
+				<a
+					href="/"
+					class="mobile-link"
+					class:active={page.url.pathname.includes('homepage')}
+					onclick={closeMenu}>Kezdőoldal</a
 				>
 				<a
 					href="/references"
 					class="mobile-link"
-					class:active={page.url.pathname.startsWith('/references')}
+					class:active={page.url.pathname.includes('portfolio')}
 					onclick={closeMenu}>Referenciák</a
 				>
 				<a
 					href="/plants"
 					class="mobile-link"
-					class:active={page.url.pathname.startsWith('/plants')}
+					class:active={page.url.pathname.includes('plants')}
 					onclick={closeMenu}>Növények</a
-				>
-				<a
-					href="/blog"
-					class="mobile-link"
-					class:active={page.url.pathname.startsWith('/blog')}
-					onclick={closeMenu}>Blog</a
 				>
 				<a
 					href="/contact"
 					class="mobile-link"
-					class:active={page.url.pathname.startsWith('/contact')}
+					class:active={page.url.pathname.includes('contact')}
 					onclick={closeMenu}>Kapcsolat</a
 				>
-
-				<div class="my-4 border-t border-gray-100 dark:border-gray-100"></div>
+				<!-- <div class="my-4 border-t border-gray-100 dark:border-gray-100"></div> -->
 			</div>
 		</div>
 	{/if}
