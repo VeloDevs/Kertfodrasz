@@ -15,7 +15,7 @@
 			<img
 				src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/470885164_9348028501897429_8619858266317203305_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=4HusygM8r5IQ7kNvwF0vP2V&_nc_oc=Adn03FCt6Yp0h59yao_dvDLmbtPWPqlkCSjDnQ4wTTeUOWsiXg-35NpLM1ct-gygp30GGrMqDGQzELlHAuSLj8_s&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=4WFYhUgqqXBqXKenSPe1mQ&oh=00_AfssEyoc24MZsExfV273-IqwiWtiKDTWysPXc0V4J5yBRA&oe=699D2579"
 				alt="Kertész munka közben mobilon"
-				class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900/75 via-gray-900/40 to-transparent lg:hidden"
+				class="absolute inset-0 -z-10 bg-linear-to-t from-gray-900/75 via-gray-900/40 to-transparent lg:hidden"
 			/>
 
 			<img
@@ -25,11 +25,11 @@
 			/>
 
 			<div
-				class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900/95 via-gray-900/70 to-transparent lg:hidden"
+				class="absolute inset-0 -z-10 bg-linear-to-t from-gray-900/95 via-gray-900/70 to-transparent lg:hidden"
 			></div>
 
 			<div
-				class="absolute inset-0 -z-10 hidden bg-gradient-to-r from-gray-900/90 via-gray-900/40 via-35% to-transparent to-60% lg:block"
+				class="absolute inset-0 -z-10 hidden bg-linear-to-r from-gray-900/90 via-gray-900/40 via-35% to-transparent to-60% lg:block"
 			></div>
 
 			<div class="relative z-10 w-full px-6 pt-32 lg:px-16 lg:pt-0">
@@ -49,7 +49,7 @@
 					</h1>
 
 					<p
-						class="mt-4 max-w-2xl text-base leading-7 text-gray-300 drop-shadow-sm lg:mt-6 lg:text-lg lg:leading-8"
+						class="mt-4 max-w-2xl text-base leading-7 text-gray-100 drop-shadow-sm lg:mt-6 lg:text-lg lg:leading-8"
 					>
 						Szakértelem és szenvedély a kertápolásban. Álmaid kertje csak egy karnyújtásnyira van.
 						Ránk bízhatod a fűnyírást, sövénynyírást és a teljes körű zöldterület-kezelést.
@@ -78,121 +78,351 @@
 	</div>
 </div>
 
-<section id="szolgaltatasok" class="bg-gray-50 py-16 sm:py-32">
+<section id="szolgaltatasok" class="bg-gray-50 py-20 sm:py-28">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-2xl text-center">
-			<h2 class="text-sm font-bold tracking-wide text-green-700 uppercase">Szolgáltatásaink</h2>
-			<p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-				Professzionális megoldások kertjéhez
-			</p>
-			<p class="mt-4 text-lg text-gray-600">
-				A tervezéstől a rendszeres fenntartásig mindent ránk bízhat. Képzett csapatunkkal életre
-				keltjük és megóvjuk zöldterületeit.
-			</p>
+		<div class="mx-auto mb-16 max-w-3xl text-center">
+			<span class="text-sm font-semibold tracking-[0.3em] text-green-600 uppercase"
+				>Szolgáltatásaink</span
+			>
+			<h2 class="mt-4 text-3xl font-light tracking-tight text-gray-900 sm:text-4xl">
+				Prémium <span class="font-semibold">kertészeti megoldások</span>
+			</h2>
+			<div class="mx-auto mt-6 h-px w-16 bg-green-200"></div>
 		</div>
 
-		<div class="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+		<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
 			<div
-				class="group relative min-h-[400px] cursor-pointer overflow-hidden rounded-[2rem] shadow-md transition-all duration-500 hover:shadow-2xl md:col-span-2"
+				class="group relative flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl lg:col-span-2 lg:flex-row"
 			>
-				<img
-					src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20190721_130046.jpg"
-					alt="Kertépítés"
-					class="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-				/>
-
-				<div
-					class="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/50 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"
-				></div>
-
-				<div class="absolute inset-0 flex flex-col justify-end p-8 sm:p-12">
-					<div class="transform transition-transform duration-500 group-hover:-translate-y-2">
-						<div
-							class="mb-4 inline-flex items-center rounded-full border border-green-400/30 bg-green-500/20 px-3 py-1 text-xs font-bold tracking-wider text-green-300 uppercase backdrop-blur-md"
-						>
-							Kiemelt szolgáltatás
-						</div>
-						<h3 class="mb-4 text-3xl font-extrabold text-white drop-shadow-md sm:text-4xl">
-							Kertépítés, nulláról a zöld oázisig
-						</h3>
-						<p class="max-w-3xl text-lg text-gray-200 drop-shadow-sm">
-							Gyepszőnyegezés, profi füvesítés, okos öntözőrendszerek telepítése és növényültetés.
-							Elmondja mit szeretne, mi pedig teljesen a nulláról zöldre varázsoljuk álmai kertjét.
-						</p>
-					</div>
+				<div class="relative h-64 w-full overflow-hidden lg:h-auto lg:w-3/5">
+					<a href="/references">
+						<img
+							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20190721_130046.jpg"
+							alt="Kertépítés"
+							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+						/>
+					</a>
+				</div>
+				<div class="flex flex-col justify-center p-8 lg:w-2/5 lg:p-12">
+					<!-- <span class="mb-2 text-[10px] font-bold tracking-widest text-green-600 uppercase">01 — A legnépszerűbb</span> -->
+					<h3 class="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl">Teljes körű Kertépítés</h3>
+					<p class="mb-8 text-sm leading-relaxed text-gray-500 sm:text-base">
+						A tervezéstől a megvalósításig. Elmondja álmai kertjét, mi pedig a nulláról felépítjük,
+						beleértve a földmunkát, növénytelepítést és a végső simításokat.
+					</p>
+					<a
+						href="/contact"
+						class="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-gray-900 uppercase"
+					>
+						Érdekel <span
+							class="block h-px w-8 bg-green-500 transition-all duration-300 group-hover:w-12"
+						></span>
+					</a>
 				</div>
 			</div>
 
 			<div
-				class="group relative min-h-[350px] cursor-pointer overflow-hidden rounded-[2rem] shadow-md transition-all duration-500 hover:shadow-2xl"
+				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
 			>
-				<img
-					src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_094432.jpg"
-					alt="Kertgondozás"
-					class="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-				/>
-				<div
-					class="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/50 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"
-				></div>
-				<div class="absolute inset-0 flex flex-col justify-end p-8">
-					<div class="transform transition-transform duration-500 group-hover:-translate-y-2">
-						<h3 class="mb-3 text-2xl font-bold text-white drop-shadow-md">
-							Teljes körű Kertgondozás
-						</h3>
-						<p class="text-base text-gray-200 drop-shadow-sm">
-							Rendszeres gondozás, fűnyírás, gyomirtás és tápanyag-utánpótlás. Dőljön hátra, mi
-							minden kerti munkát elintézünk Ön helyett, hogy a pázsit mindig tökéletes legyen.
-						</p>
-					</div>
+				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
+					<a href="/references">
+						<img
+							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_094432.jpg"
+							alt="Kertgondozás"
+							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+						/>
+					</a>
+				</div>
+				<div class="flex flex-col justify-center p-6 sm:w-3/5">
+					<!-- <span class="mb-1 text-[9px] font-bold text-green-600 uppercase">02</span> -->
+					<h3 class="mb-2 text-xl font-bold text-gray-900">Kertgondozás</h3>
+					<p class="mb-4 text-xs leading-relaxed text-gray-500">
+						Rendszeres fűnyírás, gyomirtás és tápanyag-utánpótlás a folyamatos szépségért.
+					</p>
+					<a
+						href="/contact"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						>Részletek &rarr;</a
+					>
 				</div>
 			</div>
 
 			<div
-				class="group relative min-h-[350px] cursor-pointer overflow-hidden rounded-[2rem] shadow-md transition-all duration-500 hover:shadow-2xl"
+				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
 			>
-				<img
-					src="https://kertfodrasz.hu/wp-content/gallery/fakivagas-metszes/IMG_20200229_140008.jpg"
-					alt="Sövény és fakivágás"
-					class="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
-				/>
-				<div
-					class="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/50 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100"
-				></div>
-				<div class="absolute inset-0 flex flex-col justify-end p-8">
-					<div class="transform transition-transform duration-500 group-hover:-translate-y-2">
-						<h3 class="mb-3 text-2xl font-bold text-white drop-shadow-md">
-							Sövényvágás & Fakivágás
-						</h3>
-						<p class="text-base text-gray-200 drop-shadow-sm">
-							Sövények esztétikus, egyenes formázása, valamint veszélyes vagy beteg fák szakszerű,
-							biztonságos kivágása. A keletkezett zöldhulladékot igény szerint elszállítjuk.
-						</p>
-					</div>
+				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
+					<a href="/references">
+						<img
+							src="https://kertfodrasz.hu/wp-content/gallery/fakivagas-metszes/IMG_20200229_140008.jpg"
+							alt="Sövényvágás"
+							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+						/>
+					</a>
+				</div>
+				<div class="flex flex-col justify-center p-6 sm:w-3/5">
+					<!-- <span class="mb-1 text-[9px] font-bold text-green-600 uppercase">03</span> -->
+					<h3 class="mb-2 text-xl font-bold text-gray-900">Sövény- & Fakivágás</h3>
+					<p class="mb-4 text-xs leading-relaxed text-gray-500">
+						Esztétikus formázás és veszélyes fák szakszerű kivágása, zöldhulladék elszállítással.
+					</p>
+					<a
+						href="/contact"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						>Részletek &rarr;</a
+					>
+				</div>
+			</div>
+
+			<div
+				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
+			>
+				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
+					<a href="/references">
+						<img
+							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_100622.jpg"
+							alt="Gyepszőnyegezés"
+							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+						/>
+					</a>
+				</div>
+				<div class="flex flex-col justify-center p-6 sm:w-3/5">
+					<!-- <span class="mb-1 text-[9px] font-bold text-green-600 uppercase">04</span> -->
+					<h3 class="mb-2 text-xl font-bold text-gray-900">Gyepszőnyegezés</h3>
+					<p class="mb-4 text-xs leading-relaxed text-gray-500">
+						Vakondhálózott, prémium gyepszőnyeg terítése – egyetlen nap alatt zölddé varázsoljuk
+						kertjét.
+					</p>
+					<a
+						href="/contact"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						>Részletek &rarr;</a
+					>
+				</div>
+			</div>
+
+			<div
+				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
+			>
+				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
+					<a href="/references">
+						<img
+							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/PANO_20200818_163842.jpg"
+							alt="Öntözőrendszer"
+							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+						/>
+					</a>
+				</div>
+				<div class="flex flex-col justify-center p-6 sm:w-3/5">
+					<!-- <span class="mb-1 text-[9px] font-bold text-green-600 uppercase">05</span> -->
+					<h3 class="mb-2 text-lg font-bold text-gray-900">Öntözőrendszerek</h3>
+					<p class="mb-4 text-xs leading-relaxed text-gray-500">
+						Víztakarékos, automata rendszerek telepítése, hogy kertje mindig friss és életteli
+						maradjon.
+					</p>
+					<a
+						href="/contact"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						>Részletek &rarr;</a
+					>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-<div class="bg-[#0A1F16]">
-	<div
-		class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:flex lg:items-center lg:justify-between lg:px-8"
-	>
-		<h2
-			class="font-serif text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl"
-		>
-			<span class="mb-2 block">Készen állsz a szép kertre?</span>
-			<span class="block font-medium text-green-400 italic">Kérj ingyenes felmérést még ma.</span>
-		</h2>
-		<div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-			<div class="inline-flex shadow">
-				<a
-					href="/contact"
-					class="inline-flex items-center justify-center rounded-full border border-transparent bg-white px-8 py-4 text-lg font-bold text-[#0A1F16] transition-all hover:scale-105 hover:bg-green-50"
+<section id="velemenyek" class="bg-white py-20 sm:py-28">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto mb-16 max-w-3xl text-center">
+			<span class="text-sm font-semibold tracking-[0.3em] text-green-600 uppercase">Vélemények</span
+			>
+			<h2 class="mt-4 text-3xl font-light tracking-tight text-gray-900 sm:text-4xl">
+				Akik már minket <span class="font-semibold italic">választottak</span>
+			</h2>
+
+			<div class="mt-6 flex flex-col items-center justify-center">
+				<div class="mb-2 flex items-center gap-1 text-yellow-400">
+					{#each [1, 2, 3, 4] as star (star)}
+						<svg class="h-5 w-5 fill-current" viewBox="0 0 20 20">
+							<path
+								d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+							/>
+						</svg>
+					{/each}
+
+					<svg class="h-5 w-5" viewBox="0 0 20 20">
+						<defs>
+							<linearGradient id="star-grad-49">
+								<stop offset="90%" stop-color="currentColor" />
+								<stop offset="90%" stop-color="#E5E7EB" />
+							</linearGradient>
+						</defs>
+						<path
+							fill="url(#star-grad-49)"
+							d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+						/>
+					</svg>
+				</div>
+
+				<p class="text-sm font-medium text-gray-500">
+					<span class="font-bold text-gray-900">4.9 / 5</span>
+					több mint 15 Google értékelés alapján
+				</p>
+			</div>
+		</div>
+
+		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+			<div
+				class="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl hover:ring-green-100"
+			>
+				<div>
+					<svg
+						class="mb-4 h-8 w-8 text-green-200"
+						fill="currentColor"
+						viewBox="0 0 32 32"
+						aria-hidden="true"
+					>
+						<path
+							d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
+						/>
+					</svg>
+					<p class="text-base leading-relaxed text-gray-600 italic">
+						Kertünket ők varázsolták gyönyörűvé a nyáron: gyepszőnyeg, növények telepítése,
+						öntözőrendszer kialakítása. Nagyon szép lett a kertünk, mindennel meg voltunk elégedve!
+						Bátran ajánlom a Kert fodrász céget azoknak akik szép, igényes kertet szeretnének
+						otthonukba!
+					</p>
+				</div>
+
+				<div class="mt-8 flex items-center gap-4">
+					<div
+						class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-700"
+					>
+						H.A.
+					</div>
+					<div>
+						<p class="text-sm font-bold tracking-tight text-gray-900 uppercase">Jakab Szilvia</p>
+						<p class="text-[11px] tracking-widest text-gray-500 uppercase">Harkány</p>
+					</div>
+				</div>
+			</div>
+
+			<div
+				class="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl hover:ring-green-100"
+			>
+				<div>
+					<svg class="mb-4 h-8 w-8 text-green-200" fill="currentColor" viewBox="0 0 32 32">
+						<path
+							d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
+						/>
+					</svg>
+					<p class="text-base leading-relaxed text-gray-600 italic">
+						Pontos, megbízható szakember. Ajánlani tudom mindenkinek, akinek lelkiismeretes
+						kertépítőre van szüksége.
+					</p>
+				</div>
+
+				<div class="mt-8 flex items-center gap-4">
+					<div
+						class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-700"
+					>
+						K.L.
+					</div>
+					<div>
+						<p class="text-sm font-bold tracking-tight text-gray-900 uppercase">Simon Éva</p>
+						<p class="text-[11px] tracking-widest text-gray-500 uppercase">Pécs</p>
+					</div>
+				</div>
+			</div>
+
+			<div
+				class="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl hover:ring-green-100"
+			>
+				<div>
+					<svg class="mb-4 h-8 w-8 text-green-200" fill="currentColor" viewBox="0 0 32 32">
+						<path
+							d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
+						/>
+					</svg>
+					<p class="text-base leading-relaxed text-gray-600 italic">
+						"Az öntözőrendszer telepítése óta megszűnt minden gondunk a locsolással. Profi tervezés,
+						láthatatlan kivitelezés. Csillagos ötös!"
+					</p>
+				</div>
+
+				<div class="mt-8 flex items-center gap-4">
+					<div
+						class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-700"
+					>
+						V.Z.
+					</div>
+					<div>
+						<p class="text-sm font-bold tracking-tight text-gray-900 uppercase">Varga Zoltán</p>
+						<p class="text-[11px] tracking-widest text-gray-500 uppercase">Pogány</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-10 text-center">
+			<a
+				href="https://www.google.com/maps/place/Kertfodrász+Kft./@46.0513266,18.2896403,17z/data=!4m17!1m8!3m7!1s0x4742b6ace5835bc1:0xd588def19b8aa0d1!2sKertfodrász+Kft.!8m2!3d46.051328!4d18.2893536!10e5!16s%2Fg%2F1q6j35r49!3m7!1s0x4742b6ace5835bc1:0xd588def19b8aa0d1!8m2!3d46.051328!4d18.2893536!9m1!1b1!16s%2Fg%2F1q6j35r49?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
+				target="_blank"
+				class="inline-flex items-center gap-3 rounded-full bg-white px-8 py-3 text-sm font-bold text-gray-900 shadow-md ring-1 ring-gray-200 transition-all hover:bg-gray-50 hover:shadow-lg"
+			>
+				<img
+					src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png"
+					alt="Google"
+					class="h-5 w-5"
+				/>
+				Összes Google értékelés megtekintése
+			</a>
+		</div>
+	</div>
+</section>
+
+<section id="munkafolyamat" class="bg-white py-20 sm:py-32">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="mb-16 text-center">
+			<h2 class="text-3xl font-light text-gray-900">
+				Hogyan lesz <span class="font-semibold italic">álmai kertje?</span>
+			</h2>
+		</div>
+
+		<div class="grid grid-cols-1 gap-12 md:grid-cols-3">
+			<div class="relative text-center">
+				<div
+					class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-2xl font-bold text-white shadow-lg"
 				>
-					Kapcsolatfelvétel
-				</a>
+					1
+				</div>
+				<h3 class="mb-2 text-xl font-bold text-gray-900">Ingyenes felmérés</h3>
+				<p class="text-sm leading-relaxed text-gray-500">
+					Kijövünk a helyszínre, átbeszéljük az elképzeléseit és felmérjük a lehetőségeket Baranya
+					megyében.
+				</p>
+			</div>
+			<div class="relative text-center">
+				<div
+					class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-2xl font-bold text-white shadow-lg"
+				>
+					2
+				</div>
+				<h3 class="mb-2 text-xl font-bold text-gray-900">Személyre szabott ajánlat</h3>
+				<p class="text-sm leading-relaxed text-gray-500">
+					Részletes, rejtett költségektől mentes ajánlatot készítünk a kért kertészeti munkákra.
+				</p>
+			</div>
+			<div class="relative text-center">
+				<div
+					class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-2xl font-bold text-white shadow-lg"
+				>
+					3
+				</div>
+				<h3 class="mb-2 text-xl font-bold text-gray-900">Profi kivitelezés</h3>
+				<p class="text-sm leading-relaxed text-gray-500">
+					Modern gépekkel és szakértelemmel varázsoljuk kertjét olyanná, amilyennek megálmodta.
+				</p>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
