@@ -2,12 +2,43 @@
 @plugin '@tailwindcss/forms';
 
 @theme {
-	--color-primary: #238121;
+	--color-primary: ##238121;
+	--color-background-light: #fff;
+	/* --color-background-dark: #101822; */
+	--color-surface-dark: #1a232e;
+	--color-accent: #eef5ff;
+
 	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
 	--radius-default: 0.25rem;
 	--radius-lg: 0.5rem;
 	--radius-xl: 0.75rem;
 	--radius-full: 9999px;
+}
+
+/* @font-face {
+	font-family: 'Inter';
+	src: url('/fonts/InterVariable.woff2') format('woff2');
+	font-weight: 100 900;
+	font-style: normal;
+} */
+
+@layer utilities {
+	@keyframes soft-glow {
+		0% {
+			box-shadow: 0 0 0 0 rgba(19, 109, 236, 0.4);
+		}
+		70% {
+			box-shadow: 0 0 0 15px rgba(19, 109, 236, 0);
+		}
+		100% {
+			box-shadow: 0 0 0 0 rgba(19, 109, 236, 0);
+		}
+	}
+
+	.animate-glow {
+		animation: soft-glow 3s infinite;
+	}
 }
 
 :global(html),
