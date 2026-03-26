@@ -98,14 +98,13 @@
 					<a href="/references">
 						<img
 							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20190721_130046.jpg"
-							alt="Kertépítés"
+							alt="Teljeskörű Kertépítés"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-8 lg:w-2/5 lg:p-12">
-					<!-- <span class="mb-2 text-[10px] font-bold tracking-widest text-green-600 uppercase">01 — A legnépszerűbb</span> -->
-					<h3 class="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl">Teljes körű Kertépítés</h3>
+					<h3 class="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl">Teljeskörű Kertépítés</h3>
 					<p class="mb-8 text-sm leading-relaxed text-gray-500 sm:text-base">
 						A tervezéstől a megvalósításig. Elmondja álmai kertjét, mi pedig a nulláról felépítjük,
 						beleértve a földmunkát, növénytelepítést és a végső simításokat.
@@ -127,17 +126,19 @@
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
 					<a href="/references">
 						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_094432.jpg"
-							alt="Kertgondozás"
+							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/PANO_20200818_163842.jpg"
+							alt="Öntözőrendszer építés"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-6 sm:w-3/5">
-					<!-- <span class="mb-1 text-[9px] font-bold text-green-600 uppercase">02</span> -->
-					<h3 class="mb-2 text-xl font-bold text-gray-900">Kertgondozás</h3>
+					<h3 class="mb-2 text-xl font-bold text-gray-900">
+						Öntözőrendszer építés és karbantartás
+					</h3>
 					<p class="mb-4 text-xs leading-relaxed text-gray-500">
-						Rendszeres fűnyírás, gyomirtás és tápanyag-utánpótlás a folyamatos szépségért.
+						Víztakarékos, automata rendszerek tervezése, telepítése és rendszeres karbantartása,
+						hogy kertje mindig friss maradjon.
 					</p>
 					<a
 						href="/contact"
@@ -153,17 +154,17 @@
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
 					<a href="/references">
 						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fakivagas-metszes/IMG_20200229_140008.jpg"
-							alt="Sövényvágás"
+							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20190721_130046.jpg"
+							alt="Kerttervezés Tanácsadás"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-6 sm:w-3/5">
-					<!-- <span class="mb-1 text-[9px] font-bold text-green-600 uppercase">03</span> -->
-					<h3 class="mb-2 text-xl font-bold text-gray-900">Sövény- & Fakivágás</h3>
+					<h3 class="mb-2 text-xl font-bold text-gray-900">Tanácsadás</h3>
 					<p class="mb-4 text-xs leading-relaxed text-gray-500">
-						Esztétikus formázás és veszélyes fák szakszerű kivágása, zöldhulladék elszállítással.
+						Szakmai segítség kertje megtervezéséhez. Igényfelmérés, növényválasztási javaslatok és
+						helyszíni szaktanácsadás.
 					</p>
 					<a
 						href="/contact"
@@ -186,11 +187,10 @@
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-6 sm:w-3/5">
-					<!-- <span class="mb-1 text-[9px] font-bold text-green-600 uppercase">04</span> -->
-					<h3 class="mb-2 text-xl font-bold text-gray-900">Gyepszőnyegezés</h3>
+					<h3 class="mb-2 text-xl font-bold text-gray-900">Gyepszőnyegezés, füvesítés</h3>
 					<p class="mb-4 text-xs leading-relaxed text-gray-500">
-						Vakondhálózott, prémium gyepszőnyeg terítése – egyetlen nap alatt zölddé varázsoljuk
-						kertjét.
+						Azonnali zöld kert prémium gyepszőnyeggel, vakondhálózva, vagy költséghatékonyabb,
+						hagyományos füvesítés magvetéssel és talaj-előkészítéssel.
 					</p>
 					<a
 						href="/contact"
@@ -206,18 +206,69 @@
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
 					<a href="/references">
 						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/PANO_20200818_163842.jpg"
-							alt="Öntözőrendszer"
+							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_094432.jpg"
+							alt="Műfű telepítés"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-6 sm:w-3/5">
-					<!-- <span class="mb-1 text-[9px] font-bold text-green-600 uppercase">05</span> -->
-					<h3 class="mb-2 text-lg font-bold text-gray-900">Öntözőrendszerek</h3>
+					<h3 class="mb-2 text-xl font-bold text-gray-900">Műfüves területek kialakítása</h3>
 					<p class="mb-4 text-xs leading-relaxed text-gray-500">
-						Víztakarékos, automata rendszerek telepítése, hogy kertje mindig friss és életteli
-						maradjon.
+						Gondozásmentes, örökzöld, prémium műfű telepítése teraszokra vagy kertekbe az egész
+						évben zöldellő felületért.
+					</p>
+					<a
+						href="/contact"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						>Részletek &rarr;</a
+					>
+				</div>
+			</div>
+
+			<div
+				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
+			>
+				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
+					<a href="/references">
+						<img
+							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_094432.jpg"
+							alt="Kertgondozás"
+							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+						/>
+					</a>
+				</div>
+				<div class="flex flex-col justify-center p-6 sm:w-3/5">
+					<h3 class="mb-2 text-xl font-bold text-gray-900">Teljeskörű kertgondozás</h3>
+					<p class="mb-4 text-xs leading-relaxed text-gray-500">
+						Rendszeres fűnyírás, gyomirtás, tápanyag-utánpótlás, sövénynyírás és növényápolás a kert
+						folyamatos szépségéért.
+					</p>
+					<a
+						href="/contact"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						>Részletek &rarr;</a
+					>
+				</div>
+			</div>
+
+			<div
+				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
+			>
+				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
+					<a href="/references">
+						<img
+							src="https://kertfodrasz.hu/wp-content/gallery/fakivagas-metszes/IMG_20200229_140008.jpg"
+							alt="Fakivágás"
+							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+						/>
+					</a>
+				</div>
+				<div class="flex flex-col justify-center p-6 sm:w-3/5">
+					<h3 class="mb-2 text-xl font-bold text-gray-900">Fakivágás</h3>
+					<p class="mb-4 text-xs leading-relaxed text-gray-500">
+						Veszélyes fák szakszerű és biztonságos kivágása, beleértve a tuskómarást és a
+						zöldhulladék elszállítását.
 					</p>
 					<a
 						href="/contact"
@@ -297,7 +348,7 @@
 					<div
 						class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-700"
 					>
-						H.A.
+						J.SZ.
 					</div>
 					<div>
 						<p class="text-sm font-bold tracking-tight text-gray-900 uppercase">Jakab Szilvia</p>
@@ -325,7 +376,7 @@
 					<div
 						class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-700"
 					>
-						K.L.
+						S.É.
 					</div>
 					<div>
 						<p class="text-sm font-bold tracking-tight text-gray-900 uppercase">Simon Éva</p>
