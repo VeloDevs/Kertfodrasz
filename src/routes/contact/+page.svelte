@@ -1,5 +1,9 @@
 <script>
-	import { PUBLIC_SITE_KEY, PUBLIC_SITE_URL } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
+
+	const PUBLIC_SITE_KEY = env.PUBLIC_SITE_KEY ?? '';
+	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL ?? '';
+
 	let name = '';
 	let email = '';
 	let message = '';
@@ -11,6 +15,12 @@
 	async function handleSubmit() {
 		isLoading = true;
 		statusMessage = '';
+
+		if (!PUBLIC_SITE_URL || !PUBLIC_SITE_KEY) {
+			statusMessage = '❌ Hiányzó konfiguráció: PUBLIC_SITE_URL vagy PUBLIC_SITE_KEY.';
+			isLoading = false;
+			return;
+		}
 
 		const formData = {
 			name: name,
