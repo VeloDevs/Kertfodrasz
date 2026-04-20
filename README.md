@@ -28,6 +28,20 @@ bun run dev
 npm run dev
 ```
 
+## Environment variables
+
+Create a local env file from the example:
+
+```bash
+cp .env.example .env
+```
+
+Required frontend variables:
+
+- `BACKEND_URL`: Laravel API base URL (default fallback in code: `http://127.0.0.1:8000`)
+- `PUBLIC_SITE_URL`: Contact form endpoint URL
+- `PUBLIC_SITE_KEY`: Contact form API key sent as `X-Site-Key`
+
 ## Workflow
 
 ### 1. Choose an issue you want to work on.
