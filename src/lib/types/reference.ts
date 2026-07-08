@@ -7,7 +7,7 @@ export type ReferenceCategory = {
 export type ReferenceAlbumCard = {
 	title: string;
 	slug: string;
-	workDate: string | null;
+	description: string | null;
 	imageCount: number;
 	coverImageUrl: string | null;
 	previewImageUrls: string[];
@@ -26,7 +26,7 @@ export type ReferenceAlbumImage = {
 export type ReferenceAlbumDetail = {
 	title: string;
 	slug: string;
-	workDate: string | null;
+	description: string | null;
 	category: {
 		name: string;
 		slug: string;

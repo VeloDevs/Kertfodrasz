@@ -3,18 +3,8 @@
 
 	let { data }: { data: PageData } = $props();
 
-	const formatter = new Intl.DateTimeFormat('hu-HU', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric'
-	});
-
-	function formatDate(value: string | null) {
-		if (!value) {
-			return 'Dátum nélkül';
-		}
-
-		return formatter.format(new Date(value));
+	function shortDescription(value: string | null) {
+		return value?.trim() || 'Nincs rövid leírás.';
 	}
 
 	function imageCountLabel(count: number) {
@@ -142,9 +132,14 @@
 							</div>
 
 							<div
-								class="mt-auto flex items-center justify-between gap-4 border-t border-[#eef2e8] pt-4 text-sm text-[#5f705f]"
+								class="mt-auto flex flex-col gap-4 border-t border-[#eef2e8] pt-4 text-sm text-[#5f705f]"
 							>
-								<span>{formatDate(album.workDate)}</span>
+								<p
+									class="leading-6 text-[#5f705f]"
+									style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"
+								>
+									{shortDescription(album.description)}
+								</p>
 								<span class="font-semibold text-[#1f4d2c]">Mappa megnyitása</span>
 							</div>
 						</div>

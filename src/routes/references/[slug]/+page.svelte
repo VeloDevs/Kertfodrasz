@@ -4,18 +4,8 @@
 	let { data }: { data: PageData } = $props();
 	let activeImageIndex = $state<number | null>(null);
 
-	const formatter = new Intl.DateTimeFormat('hu-HU', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric'
-	});
-
-	function formatDate(value: string | null) {
-		if (!value) {
-			return 'Dátum nélkül';
-		}
-
-		return formatter.format(new Date(value));
+	function shortDescription(value: string | null) {
+		return value?.trim() || 'Nincs rövid leírás.';
 	}
 
 	function openLightbox(index: number) {
@@ -116,8 +106,12 @@
 				class="grid gap-4 rounded-[30px] border border-white/70 bg-white/75 p-6 shadow-[0_24px_60px_rgba(45,68,42,0.12)] backdrop-blur-sm"
 			>
 				<div>
-					<p class="text-xs font-semibold tracking-[0.22em] text-[#6a816a] uppercase">Dátum</p>
-					<p class="mt-2 text-xl font-bold text-[#223424]">{formatDate(data.album.workDate)}</p>
+					<p class="text-xs font-semibold tracking-[0.22em] text-[#6a816a] uppercase">
+						Rövid leírás
+					</p>
+					<p class="mt-2 text-base leading-7 text-[#223424]">
+						{shortDescription(data.album.description)}
+					</p>
 				</div>
 				<div>
 					<p class="text-xs font-semibold tracking-[0.22em] text-[#6a816a] uppercase">Képek</p>
