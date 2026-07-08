@@ -1,58 +1,88 @@
 <script>
 	import { env } from '$env/dynamic/public';
 
-	const PUBLIC_SITE_KEY = env.PUBLIC_SITE_KEY ?? '';
-	const PUBLIC_SITE_URL = env.PUBLIC_SITE_URL ?? '';
+	const DEFAULT_BACKEND_URL = 'http://127.0.0.1:8000';
+	const PUBLIC_BACKEND_URL = (env.PUBLIC_BACKEND_URL || DEFAULT_BACKEND_URL).replace(/\/$/, '');
+	const CONTACT_ENDPOINT = `${PUBLIC_BACKEND_URL}/api/contact`;
+	const CONTACT_SUBJECTS = ['Érdeklődés', 'Hiba jelentése', 'Egyéb'];
 
 	let name = '';
 	let email = '';
-	let message = '';
 	let phone = '';
+	let subject = CONTACT_SUBJECTS[0];
+	let message = '';
+	let website = '';
 
 	let statusMessage = '';
+	let statusType = 'idle';
 	let isLoading = false;
 
+	/** @param {string} value */
+	function isEmailValid(value) {
+		return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+	}
+
+	$: canSubmit =
+		!isLoading &&
+		name.trim().length > 0 &&
+		isEmailValid(email.trim()) &&
+		subject.trim().length > 0 &&
+		message.trim().length > 0;
+
 	async function handleSubmit() {
-		isLoading = true;
 		statusMessage = '';
 
-		if (!PUBLIC_SITE_URL || !PUBLIC_SITE_KEY) {
-			statusMessage = '❌ Hiányzó konfiguráció: PUBLIC_SITE_URL vagy PUBLIC_SITE_KEY.';
-			isLoading = false;
+		if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+			statusType = 'error';
+			statusMessage = 'Tölts ki minden kötelező mezőt.';
 			return;
 		}
 
+		if (!isEmailValid(email.trim())) {
+			statusType = 'error';
+			statusMessage = 'Érvénytelen e-mail cím.';
+			return;
+		}
+
+		isLoading = true;
+
 		const formData = {
-			name: name,
-			email: email,
-			message: message,
-			phone: phone
+			name,
+			email,
+			phone,
+			subject,
+			message,
+			website
 		};
 
 		try {
-			const response = await fetch(PUBLIC_SITE_URL, {
+			const response = await fetch(CONTACT_ENDPOINT, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Accept: 'application/json',
-					'X-Site-Key': PUBLIC_SITE_KEY
+					Accept: 'application/json'
 				},
 				body: JSON.stringify(formData)
 			});
 
-			const result = await response.json();
+			const result = await response.json().catch(() => null);
 
 			if (response.ok) {
-				statusMessage = '✅ Szuper! Megkaptuk az üzeneted.';
+				statusType = 'success';
+				statusMessage = 'Köszönjük az üzenetet!';
 				name = '';
 				email = '';
-				message = '';
 				phone = '';
+				subject = CONTACT_SUBJECTS[0];
+				message = '';
+				website = '';
 			} else {
-				statusMessage = '❌ Hiba: ' + (result.message || 'Valami nem sikerült.');
+				statusType = 'error';
+				statusMessage = result?.message || 'Sikertelen küldés, próbáld újra később!';
 			}
 		} catch (error) {
-			statusMessage = '❌ Hálózati hiba! Fut a backend szerver?';
+			statusType = 'error';
+			statusMessage = 'Sikertelen küldés, próbáld újra később!';
 			console.error(error);
 		}
 
@@ -153,7 +183,7 @@
 			<form on:submit|preventDefault={handleSubmit} class="space-y-6">
 				<div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
 					<div class="sm:col-span-2">
-						<label for="name" class="block text-sm font-semibold text-gray-700">Teljes név</label>
+						<label for="name" class="block text-sm font-semibold text-gray-700">Név</label>
 						<input
 							id="name"
 							type="text"
@@ -161,11 +191,12 @@
 							class="mt-1 block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:border-green-500 focus:ring-green-500"
 							required
 							placeholder="Gipsz Jakab"
+							autocomplete="name"
 						/>
 					</div>
 
 					<div>
-						<label for="email" class="block text-sm font-semibold text-gray-700">Email cím</label>
+						<label for="email" class="block text-sm font-semibold text-gray-700">E-mail cím</label>
 						<input
 							id="email"
 							type="email"
@@ -173,6 +204,7 @@
 							class="mt-1 block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:border-green-500 focus:ring-green-500"
 							required
 							placeholder="pelda@email.com"
+							autocomplete="email"
 						/>
 					</div>
 
@@ -183,9 +215,23 @@
 							type="tel"
 							bind:value={phone}
 							class="mt-1 block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:border-green-500 focus:ring-green-500"
-							required
 							placeholder="+36 20 123 4567"
+							autocomplete="tel"
 						/>
+					</div>
+
+					<div class="sm:col-span-2">
+						<label for="subject" class="block text-sm font-semibold text-gray-700">Tárgy</label>
+						<select
+							id="subject"
+							bind:value={subject}
+							class="mt-1 block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:border-green-500 focus:ring-green-500"
+							required
+						>
+							{#each CONTACT_SUBJECTS as option (option)}
+								<option value={option}>{option}</option>
+							{/each}
+						</select>
 					</div>
 
 					<div class="sm:col-span-2">
@@ -201,9 +247,21 @@
 					</div>
 
 					<div class="sm:col-span-2">
+						<input
+							id="website"
+							type="text"
+							bind:value={website}
+							autocomplete="off"
+							tabindex="-1"
+							aria-hidden="true"
+							class="hidden"
+						/>
+					</div>
+
+					<div class="sm:col-span-2">
 						<button
 							type="submit"
-							disabled={isLoading}
+							disabled={!canSubmit}
 							class="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-green-700 px-6 py-3 text-base font-medium text-white shadow-sm transition-all hover:bg-green-800 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none disabled:opacity-50"
 						>
 							{isLoading ? 'Küldés folyamatban...' : 'Üzenet küldése'}
@@ -214,7 +272,8 @@
 
 			{#if statusMessage}
 				<div
-					class={`mt-6 rounded p-4 text-center text-sm font-semibold ${statusMessage.includes('✅') ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}
+					class={`mt-6 rounded p-4 text-center text-sm font-semibold ${statusType === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}
+					aria-live="polite"
 				>
 					{statusMessage}
 				</div>

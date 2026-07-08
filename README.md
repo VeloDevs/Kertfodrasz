@@ -39,8 +39,9 @@ cp .env.example .env
 Required frontend variables:
 
 - `BACKEND_URL`: Laravel API base URL (default fallback in code: `http://127.0.0.1:8000`)
-- `PUBLIC_SITE_URL`: Contact form endpoint URL
-- `PUBLIC_SITE_KEY`: Contact form API key sent as `X-Site-Key`
+- `PUBLIC_BACKEND_URL`: Public Laravel base URL used by the contact form submit on the client
+
+Contact form spam protection uses a hidden honeypot field, so the frontend must keep the hidden `website` input empty.
 
 ## Workflow
 
