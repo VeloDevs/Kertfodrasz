@@ -1,0 +1,24 @@
+# Kertfodrász
+
+> Szakértelem és szenvedély a kertápolásban Kozármislenyben és Baranya megyében.
+
+## Szolgáltatások
+- **Teljeskörű Kertépítés**: Tervezéstől a megvalósításig, földmunka, növénytelepítés.
+- **Öntözőrendszer építés és karbantartás**: Automatizált, víztakarékos kerti öntözőrendszerek.
+- **Gyepszőnyegezés és füvesítés**: Azonnali zöld gyepszőnyeg terítés vakondhálóval vagy magvetéses füvesítés.
+- **Műfüves területek**: Gondozásmentes, prémium műfű telepítése.
+- **Kertgondozás**: Fűnyírás, sövénynyírás, gyomirtás, tápanyag-utánpótlás.
+- **Fakivágás**: Veszélyes fák kivágása, tuskómarás, zöldhulladék-elszállítás.
+
+## Kapcsolat és Elérhetőség
+- **Cím**: Kozármisleny, Baranya megye, Magyarország
+- **Telefon**: [+36 20 520 9276](tel:+36205209276)
+- **E-mail**: [kertfodrasz@gmail.com](mailto:kertfodrasz@gmail.com)
+- **Keresési területek**: Kozármisleny, Pécs, Harkány, Pogány és vonzáskörzete.
+
+## Fő oldalak
+- [Kezdőlap](https://kertfodrasz.hu/): Szolgáltatások, munkafolyamat és vélemények.
+- [Referenciák](https://kertfodrasz.hu/references): Fotóalbumok az elkészült kertekről.
+- [Növénytár](https://kertfodrasz.hu/plants): Növénykatalógus és kereső.
+- [Kapcsolat](https://kertfodrasz.hu/contact): Ajánlatkérő űrlap.
+- [Adatvédelem](https://kertfodrasz.hu/adatvedelem): Adatkezelési tájékoztató.

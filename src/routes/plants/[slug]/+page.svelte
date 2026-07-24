@@ -57,6 +57,35 @@
 
 		return '';
 	}
+
+	const breadcrumbJsonLd = $derived({
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Kezdőlap',
+				item: 'https://kertfodrasz.hu'
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Növénytár',
+				item: 'https://kertfodrasz.hu/plants'
+			},
+			{
+				'@type': 'ListItem',
+				position: 3,
+				name: data.plant.name,
+				item: `https://kertfodrasz.hu/plants/${data.plant.slug}`
+			}
+		]
+	});
+
+	const breadcrumbScript = $derived(
+		`<script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd)}</` + `script>`
+	);
 </script>
 
 <svelte:head>
@@ -65,6 +94,8 @@
 		name="description"
 		content={`${data.plant.name} növény adatlap és képgaléria a Kertfodrász növénytárában.`}
 	/>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html breadcrumbScript}
 </svelte:head>
 
 <section
@@ -75,8 +106,19 @@
 	></div>
 
 	<div
-		class="relative mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-14 sm:px-6 lg:px-8 lg:py-18"
+		class="relative mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8 lg:py-14"
 	>
+		<!-- Visible Breadcrumbs -->
+		<nav class="flex items-center text-xs font-semibold text-[#556855]" aria-label="Morzsamenü">
+			<ol class="flex items-center space-x-2">
+				<li><a href="/" class="hover:text-green-800">Kezdőlap</a></li>
+				<li><span class="mx-1 text-gray-400">/</span></li>
+				<li><a href="/plants" class="hover:text-green-800">Növénytár</a></li>
+				<li><span class="mx-1 text-gray-400">/</span></li>
+				<li class="text-gray-900" aria-current="page">{data.plant.name}</li>
+			</ol>
+		</nav>
+
 		<a
 			href="/plants"
 			class="inline-flex w-fit items-center gap-2 rounded-full border border-[#c8d5c0] bg-white/80 px-4 py-2 text-sm font-semibold text-[#2f5635] transition hover:border-[#8aa088] hover:bg-white"
@@ -139,11 +181,13 @@
 					<button
 						type="button"
 						onclick={() => openLightbox(index)}
+						aria-label={`Kép megnyitása: ${image.alt}`}
 						class={`group relative overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_20px_50px_rgba(45,68,42,0.08)] ${tileClass(index)}`}
 					>
 						<img
 							src={image.imageUrl}
 							alt={image.alt}
+							loading="lazy"
 							class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
 						/>
 						{#if image.isCover}
@@ -178,9 +222,10 @@
 
 {#if activeImageIndex !== null}
 	<div
-		class="fixed inset-0 z-50 flex items-center justify-center bg-black/82 p-4 sm:p-8"
+		class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 sm:p-8"
 		role="dialog"
 		aria-modal="true"
+		aria-label={`${data.plant.name} galéria nagyítás`}
 	>
 		<button
 			type="button"

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { env } from '$env/dynamic/public';
 
 	const DEFAULT_BACKEND_URL = 'http://127.0.0.1:8000';
@@ -6,30 +6,31 @@
 	const CONTACT_ENDPOINT = `${PUBLIC_BACKEND_URL}/api/contact`;
 	const CONTACT_SUBJECTS = ['Érdeklődés', 'Hiba jelentése', 'Egyéb'];
 
-	let name = '';
-	let email = '';
-	let phone = '';
-	let subject = CONTACT_SUBJECTS[0];
-	let message = '';
-	let website = '';
+	let name = $state('');
+	let email = $state('');
+	let phone = $state('');
+	let subject = $state(CONTACT_SUBJECTS[0]);
+	let message = $state('');
+	let website = $state('');
 
-	let statusMessage = '';
-	let statusType = 'idle';
-	let isLoading = false;
+	let statusMessage = $state('');
+	let statusType = $state<'idle' | 'success' | 'error'>('idle');
+	let isLoading = $state(false);
 
-	/** @param {string} value */
-	function isEmailValid(value) {
+	function isEmailValid(value: string) {
 		return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 	}
 
-	$: canSubmit =
+	const canSubmit = $derived(
 		!isLoading &&
-		name.trim().length > 0 &&
-		isEmailValid(email.trim()) &&
-		subject.trim().length > 0 &&
-		message.trim().length > 0;
+			name.trim().length > 0 &&
+			isEmailValid(email.trim()) &&
+			subject.trim().length > 0 &&
+			message.trim().length > 0
+	);
 
-	async function handleSubmit() {
+	async function handleSubmit(event: SubmitEvent) {
+		event.preventDefault();
 		statusMessage = '';
 
 		if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
@@ -69,7 +70,7 @@
 
 			if (response.ok) {
 				statusType = 'success';
-				statusMessage = 'Köszönjük az üzenetet!';
+				statusMessage = 'Köszönjük az üzenetet! Hamarosan felvesszük veled a kapcsolatot.';
 				name = '';
 				email = '';
 				phone = '';
@@ -90,15 +91,23 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Kapcsolat | Kertfodrász</title>
+	<meta
+		name="description"
+		content="Vedd fel velünk a kapcsolatot ingyenes helyszíni felmérésért és személyre szabott kertépítési ajánlatért Baranya megyében."
+	/>
+</svelte:head>
+
 <div
-	class="mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl shadow-green-900/10 sm:mt-20"
+	class="mx-auto my-12 max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl shadow-green-900/10 sm:my-20"
 >
 	<div class="grid grid-cols-1 md:grid-cols-2">
 		<div
 			class="relative flex flex-col justify-between bg-green-900 px-6 py-10 text-white sm:px-10 xl:p-12"
 		>
 			<div>
-				<h2 class="text-3xl font-extrabold tracking-tight">Vedd fel velünk a kapcsolatot</h2>
+				<h1 class="text-3xl font-extrabold tracking-tight">Vedd fel velünk a kapcsolatot</h1>
 				<p class="mt-4 text-lg text-green-200">
 					Álmaid kertje csak egy karnyújtásnyira van. Töltsd ki az űrlapot, vagy keress minket
 					közvetlenül az alábbi elérhetőségeken.
@@ -113,6 +122,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
+								aria-hidden="true"
 							>
 								<path
 									stroke-linecap="round"
@@ -122,28 +132,8 @@
 							</svg>
 						</div>
 						<dt class="sr-only">Telefonszám</dt>
-						<dd class="ml-3 text-base"><a href="tel:+36205209276">+36 20 520 9276</a></dd>
-					</div>
-
-					<div class="flex items-start">
-						<div class="shrink-0">
-							<svg
-								class="h-6 w-6 text-green-400"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-								/>
-							</svg>
-						</div>
-						<dt class="sr-only">Email</dt>
 						<dd class="ml-3 text-base">
-							<a href="mailto:kertfodrasz@gmail.com">kertfodrasz@gmail.com</a>
+							<a href="tel:+36205209276" class="hover:underline">+36 20 520 9276</a>
 						</dd>
 					</div>
 
@@ -155,6 +145,32 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
+								aria-hidden="true"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+								/>
+							</svg>
+						</div>
+						<dt class="sr-only">Email</dt>
+						<dd class="ml-3 text-base">
+							<a href="mailto:kertfodrasz@gmail.com" class="hover:underline"
+								>kertfodrasz@gmail.com</a
+							>
+						</dd>
+					</div>
+
+					<div class="flex items-start">
+						<div class="shrink-0">
+							<svg
+								class="h-6 w-6 text-green-400"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								aria-hidden="true"
 							>
 								<path
 									stroke-linecap="round"
@@ -169,21 +185,25 @@
 							</svg>
 						</div>
 						<dt class="sr-only">Cím</dt>
-						<dd class="ml-3 text-base">Kozármisleny, Magyarország</dd>
+						<dd class="ml-3 text-base">Kozármisleny, Baranya megye, Magyarország</dd>
 					</div>
 				</dl>
 			</div>
 
-			<div class="absolute -right-5 -bottom-5 mt-8 text-9xl opacity-20">🌿</div>
+			<div class="absolute -right-5 -bottom-5 text-9xl opacity-20" aria-hidden="true">🌿</div>
 		</div>
 
 		<div class="bg-white px-6 py-10 sm:px-10 xl:p-12">
-			<h3 class="mb-6 text-2xl font-bold text-gray-900">Küldj üzenetet</h3>
+			<h2 class="mb-6 text-2xl font-bold text-gray-900">Küldj üzenetet</h2>
 
-			<form on:submit|preventDefault={handleSubmit} class="space-y-6">
+			<form
+				onsubmit={handleSubmit}
+				class="space-y-6"
+				aria-describedby={statusMessage ? 'form-status' : undefined}
+			>
 				<div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
 					<div class="sm:col-span-2">
-						<label for="name" class="block text-sm font-semibold text-gray-700">Név</label>
+						<label for="name" class="block text-sm font-semibold text-gray-700">Név *</label>
 						<input
 							id="name"
 							type="text"
@@ -196,7 +216,8 @@
 					</div>
 
 					<div>
-						<label for="email" class="block text-sm font-semibold text-gray-700">E-mail cím</label>
+						<label for="email" class="block text-sm font-semibold text-gray-700">E-mail cím *</label
+						>
 						<input
 							id="email"
 							type="email"
@@ -205,6 +226,7 @@
 							required
 							placeholder="pelda@email.com"
 							autocomplete="email"
+							inputmode="email"
 						/>
 					</div>
 
@@ -217,11 +239,12 @@
 							class="mt-1 block w-full rounded-md border-gray-300 px-4 py-3 shadow-sm focus:border-green-500 focus:ring-green-500"
 							placeholder="+36 20 123 4567"
 							autocomplete="tel"
+							inputmode="tel"
 						/>
 					</div>
 
 					<div class="sm:col-span-2">
-						<label for="subject" class="block text-sm font-semibold text-gray-700">Tárgy</label>
+						<label for="subject" class="block text-sm font-semibold text-gray-700">Tárgy *</label>
 						<select
 							id="subject"
 							bind:value={subject}
@@ -235,7 +258,7 @@
 					</div>
 
 					<div class="sm:col-span-2">
-						<label for="message" class="block text-sm font-semibold text-gray-700">Üzenet</label>
+						<label for="message" class="block text-sm font-semibold text-gray-700">Üzenet *</label>
 						<textarea
 							id="message"
 							bind:value={message}
@@ -272,7 +295,9 @@
 
 			{#if statusMessage}
 				<div
+					id="form-status"
 					class={`mt-6 rounded p-4 text-center text-sm font-semibold ${statusType === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}
+					role="alert"
 					aria-live="polite"
 				>
 					{statusMessage}

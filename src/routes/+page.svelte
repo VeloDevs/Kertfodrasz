@@ -1,8 +1,8 @@
 <svelte:head>
-	<title>Kertfodrász</title>
+	<title>Kertfodrász | Precíz kertápolás kompromisszumok nélkül</title>
 	<meta
 		name="description"
-		content="Szakértelem és szenvedély a kertápolásban. Álmaid kertje csak egy karnyújtásnyira van Baranya megyében."
+		content="Szakértelem és szenvedély a kertápolásban. Kertépítés, gyepszőnyegezés, öntözőrendszer telepítés és teljes zöldterület-kezelés Baranya megyében."
 	/>
 </svelte:head>
 
@@ -11,16 +11,19 @@
 		<div
 			class="relative isolate flex min-h-[90vh] items-end overflow-hidden bg-gray-900 pb-12 sm:rounded-[2.5rem] sm:shadow-2xl lg:max-h-[880px] lg:min-h-[700px] lg:items-center lg:pb-0"
 		>
-			<!-- A kepek csak placeholdernek vannak bent, nem a véglegesek. -->
 			<img
 				src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/470885164_9348028501897429_8619858266317203305_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=4HusygM8r5IQ7kNvwF0vP2V&_nc_oc=Adn03FCt6Yp0h59yao_dvDLmbtPWPqlkCSjDnQ4wTTeUOWsiXg-35NpLM1ct-gygp30GGrMqDGQzELlHAuSLj8_s&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=4WFYhUgqqXBqXKenSPe1mQ&oh=00_AfssEyoc24MZsExfV273-IqwiWtiKDTWysPXc0V4J5yBRA&oe=699D2579"
 				alt="Kertész munka közben mobilon"
+				loading="eager"
+				fetchpriority="high"
 				class="absolute inset-0 -z-10 bg-linear-to-t from-gray-900/75 via-gray-900/40 to-transparent lg:hidden"
 			/>
 
 			<img
 				src="https://i0.wp.com/kertfodrasz.hu/wp-content/uploads/2020/06/content_1_kertesz_peter-min.jpg?w=800&ssl=1"
 				alt="Kertész munka közben asztali gépen"
+				loading="eager"
+				fetchpriority="high"
 				class="absolute inset-0 -z-10 hidden h-full w-full -scale-x-100 object-cover object-center lg:block"
 			/>
 
@@ -95,10 +98,11 @@
 				class="group relative flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl lg:col-span-2 lg:flex-row"
 			>
 				<div class="relative h-64 w-full overflow-hidden lg:h-auto lg:w-3/5">
-					<a href="/references">
+					<a href="/references" aria-label="Teljeskörű Kertépítés referenciák megtekintése">
 						<img
 							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20190721_130046.jpg"
 							alt="Teljeskörű Kertépítés"
+							loading="lazy"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
@@ -111,6 +115,7 @@
 					</p>
 					<a
 						href="/contact"
+						aria-label="Kapcsolatfelvétel teljeskörű kertépítéssel kapcsolatban"
 						class="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-gray-900 uppercase"
 					>
 						Érdekel <span
@@ -124,10 +129,11 @@
 				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
-					<a href="/references">
+					<a href="/references" aria-label="Öntözőrendszer építés referenciák">
 						<img
 							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/PANO_20200818_163842.jpg"
 							alt="Öntözőrendszer építés"
+							loading="lazy"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
@@ -142,6 +148,7 @@
 					</p>
 					<a
 						href="/contact"
+						aria-label="Részletek az öntözőrendszer építésről"
 						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
 						>Részletek &rarr;</a
 					>
@@ -152,10 +159,11 @@
 				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
-					<a href="/references">
+					<a href="/references" aria-label="Kerttervezési tanácsadás referenciák">
 						<img
 							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20190721_130046.jpg"
 							alt="Kerttervezés Tanácsadás"
+							loading="lazy"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
@@ -168,6 +176,7 @@
 					</p>
 					<a
 						href="/contact"
+						aria-label="Részletek a kertészeti tanácsadásról"
 						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
 						>Részletek &rarr;</a
 					>
@@ -178,10 +187,11 @@
 				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
-					<a href="/references">
+					<a href="/references" aria-label="Gyepszőnyegezés referenciák">
 						<img
 							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_100622.jpg"
 							alt="Gyepszőnyegezés"
+							loading="lazy"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
@@ -194,6 +204,7 @@
 					</p>
 					<a
 						href="/contact"
+						aria-label="Részletek a gyepszőnyegezésről és füvesítésről"
 						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
 						>Részletek &rarr;</a
 					>
@@ -204,10 +215,11 @@
 				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
-					<a href="/references">
+					<a href="/references" aria-label="Műfű telepítési referenciák">
 						<img
 							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_094432.jpg"
 							alt="Műfű telepítés"
+							loading="lazy"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
@@ -220,6 +232,7 @@
 					</p>
 					<a
 						href="/contact"
+						aria-label="Részletek a műfű telepítésről"
 						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
 						>Részletek &rarr;</a
 					>
@@ -230,10 +243,11 @@
 				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
-					<a href="/references">
+					<a href="/references" aria-label="Kertgondozási referenciák">
 						<img
 							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_094432.jpg"
 							alt="Kertgondozás"
+							loading="lazy"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
@@ -246,6 +260,7 @@
 					</p>
 					<a
 						href="/contact"
+						aria-label="Részletek a teljeskörű kertgondozásról"
 						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
 						>Részletek &rarr;</a
 					>
@@ -256,10 +271,11 @@
 				class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-200 transition-all duration-300 hover:shadow-xl sm:flex-row"
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
-					<a href="/references">
+					<a href="/references" aria-label="Fakivágási referenciák">
 						<img
 							src="https://kertfodrasz.hu/wp-content/gallery/fakivagas-metszes/IMG_20200229_140008.jpg"
 							alt="Fakivágás"
+							loading="lazy"
 							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 						/>
 					</a>
@@ -272,6 +288,7 @@
 					</p>
 					<a
 						href="/contact"
+						aria-label="Részletek a fakivágásról"
 						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
 						>Részletek &rarr;</a
 					>
@@ -291,16 +308,19 @@
 			</h2>
 
 			<div class="mt-6 flex flex-col items-center justify-center">
-				<div class="mb-2 flex items-center gap-1 text-yellow-400">
+				<div
+					class="mb-2 flex items-center gap-1 text-yellow-400"
+					aria-label="Értékelés: 4.9 csillag az 5-ből"
+				>
 					{#each [1, 2, 3, 4] as star (star)}
-						<svg class="h-5 w-5 fill-current" viewBox="0 0 20 20">
+						<svg class="h-5 w-5 fill-current" viewBox="0 0 20 20" aria-hidden="true">
 							<path
 								d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
 							/>
 						</svg>
 					{/each}
 
-					<svg class="h-5 w-5" viewBox="0 0 20 20">
+					<svg class="h-5 w-5" viewBox="0 0 20 20" aria-hidden="true">
 						<defs>
 							<linearGradient id="star-grad-49">
 								<stop offset="90%" stop-color="currentColor" />
@@ -361,7 +381,12 @@
 				class="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl hover:ring-green-100"
 			>
 				<div>
-					<svg class="mb-4 h-8 w-8 text-green-200" fill="currentColor" viewBox="0 0 32 32">
+					<svg
+						class="mb-4 h-8 w-8 text-green-200"
+						fill="currentColor"
+						viewBox="0 0 32 32"
+						aria-hidden="true"
+					>
 						<path
 							d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
 						/>
@@ -389,14 +414,19 @@
 				class="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl hover:ring-green-100"
 			>
 				<div>
-					<svg class="mb-4 h-8 w-8 text-green-200" fill="currentColor" viewBox="0 0 32 32">
+					<svg
+						class="mb-4 h-8 w-8 text-green-200"
+						fill="currentColor"
+						viewBox="0 0 32 32"
+						aria-hidden="true"
+					>
 						<path
 							d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"
 						/>
 					</svg>
 					<p class="text-base leading-relaxed text-gray-600 italic">
-						"Az öntözőrendszer telepítése óta megszűnt minden gondunk a locsolással. Profi tervezés,
-						láthatatlan kivitelezés. Csillagos ötös!"
+						Az öntözőrendszer telepítése óta megszűnt minden gondunk a locsolással. Profi tervezés,
+						láthatatlan kivitelezés. Csillagos ötös!
 					</p>
 				</div>
 
@@ -418,12 +448,15 @@
 			<a
 				href="https://www.google.com/maps/place/Kertfodrász+Kft./@46.0513266,18.2896403,17z/data=!4m17!1m8!3m7!1s0x4742b6ace5835bc1:0xd588def19b8aa0d1!2sKertfodrász+Kft.!8m2!3d46.051328!4d18.2893536!10e5!16s%2Fg%2F1q6j35r49!3m7!1s0x4742b6ace5835bc1:0xd588def19b8aa0d1!8m2!3d46.051328!4d18.2893536!9m1!1b1!16s%2Fg%2F1q6j35r49?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
 				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Összes Google értékelés megtekintése új ablakban"
 				class="inline-flex items-center gap-3 rounded-full bg-white px-8 py-3 text-sm font-bold text-gray-900 shadow-md ring-1 ring-gray-200 transition-all hover:bg-gray-50 hover:shadow-lg"
 			>
 				<img
 					src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png"
 					alt="Google"
 					class="h-5 w-5"
+					loading="lazy"
 				/>
 				Összes Google értékelés megtekintése
 			</a>
