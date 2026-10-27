@@ -1,3 +1,6 @@
+import type { Pagination } from './pagination';
+import type { PageHero } from './hero';
+
 export type ReferenceCategory = {
 	name: string;
 	slug: string;
@@ -35,6 +38,8 @@ export type ReferenceAlbumDetail = {
 };
 
 export type ReferenceIndexResponse = {
+	pagination: Pagination;
+	hero?: PageHero;
 	categories: ReferenceCategory[];
 	selectedCategorySlug: string;
 	albums: ReferenceAlbumCard[];

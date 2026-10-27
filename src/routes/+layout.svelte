@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { jsonLdScript as serializeJsonLd } from '$lib/json-ld.js';
 	import '../app.css';
 	import { page } from '$app/state';
 	import favicon from '$lib/assets/favicon.svg';
@@ -8,8 +9,35 @@
 	let { children } = $props();
 
 	const siteUrl = 'https://kertfodrasz.hu';
-	const currentUrl = $derived(page.url?.href || siteUrl);
-	const ogImage = `${siteUrl}/icon-512.png`;
+	const currentUrl = $derived(`${siteUrl}${page.url.pathname}`);
+	const defaultImage = `${siteUrl}/og-image.png`;
+	const pageMeta: Record<string, { title: string; description: string }> = {
+		'/references': {
+			title: 'Referenciák | Kertfodrász',
+			description: 'Elkészült kertjeink és kertészeti munkáink képekben.'
+		},
+		'/plants': {
+			title: 'Növénytár | Kertfodrász',
+			description: 'Találd meg a kertedhez illő növényeket.'
+		},
+		'/contact': {
+			title: 'Kapcsolat | Kertfodrász',
+			description: 'Kérj ajánlatot kertépítésre és kertgondozásra.'
+		},
+		'/blog': { title: 'Blog | Kertfodrász', description: 'Kertészeti ötletek és hírek.' },
+		'/adatvedelem': {
+			title: 'Adatvédelem | Kertfodrász',
+			description: 'A Kertfodrász adatkezelési tájékoztatója.'
+		}
+	};
+	const meta = $derived(
+		page.data.seo ||
+			pageMeta[page.url.pathname] || {
+				title: 'Kertfodrász | Precíz kertápolás kompromisszumok nélkül',
+				description: 'Kertépítés és kertgondozás Kozármislenyben és Baranya megyében.'
+			}
+	);
+	const ogImage = $derived(page.data.seo?.image || defaultImage);
 
 	const jsonLdData = {
 		'@context': 'https://schema.org',
@@ -19,8 +47,8 @@
 				'@id': `${siteUrl}/#organization`,
 				name: 'Kertfodrász Kft.',
 				url: siteUrl,
-				logo: ogImage,
-				image: ogImage,
+				logo: `${siteUrl}/icon-512.png`,
+				image: defaultImage,
 				telephone: '+36205209276',
 				email: 'kertfodrasz@gmail.com',
 				address: {
@@ -57,13 +85,20 @@
 		]
 	};
 
-	const jsonLdScript =
-		`<script type="application/ld+json">${JSON.stringify(jsonLdData)}</` + `script>`;
+	const jsonLdScript = serializeJsonLd(jsonLdData);
 </script>
 
 <svelte:head>
 	<link rel="icon" type="image/svg+xml" href={favicon} />
 	<link rel="alternate" type="application/rss+xml" title="Kertfodrász RSS Feed" href="/rss.xml" />
+	<meta
+		name="robots"
+		content={page.url.searchParams.has('q') ||
+		page.url.searchParams.has('category') ||
+		page.url.searchParams.has('page')
+			? 'noindex,follow'
+			: 'index,follow,max-image-preview:large'}
+	/>
 	<link rel="canonical" href={currentUrl} />
 
 	<!-- Open Graph / Facebook -->
@@ -71,20 +106,14 @@
 	<meta property="og:site_name" content="Kertfodrász" />
 	<meta property="og:locale" content="hu_HU" />
 	<meta property="og:url" content={currentUrl} />
-	<meta property="og:title" content="Kertfodrász | Precíz kertápolás kompromisszumok nélkül" />
-	<meta
-		property="og:description"
-		content="Szakértelem és szenvedély a kertápolásban. Kertépítés, sövénynyírás, füvesítés és automata öntözőrendszerek Kozármislenyben és Baranya megyében."
-	/>
+	<meta property="og:title" content={meta.title} />
+	<meta property="og:description" content={meta.description} />
 	<meta property="og:image" content={ogImage} />
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Kertfodrász | Precíz kertápolás kompromisszumok nélkül" />
-	<meta
-		name="twitter:description"
-		content="Szakértelem és szenvedély a kertápolásban. Kertépítés, sövénynyírás, füvesítés és automata öntözőrendszerek Kozármislenyben és Baranya megyében."
-	/>
+	<meta name="twitter:title" content={meta.title} />
+	<meta name="twitter:description" content={meta.description} />
 	<meta name="twitter:image" content={ogImage} />
 
 	<!-- JSON-LD Structured Data -->
@@ -94,7 +123,7 @@
 
 <a
 	href="#main-content"
-	class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-green-800 focus:px-4 focus:py-3 focus:font-bold focus:text-white focus:shadow-xl focus:outline-none"
+	class="focus:bg-primary sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:px-4 focus:py-3 focus:font-bold focus:text-white focus:shadow-xl focus:outline-none"
 >
 	Ugrás a főtartalomra
 </a>

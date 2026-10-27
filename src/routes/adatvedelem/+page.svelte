@@ -67,8 +67,8 @@
 					Adatvédelmi és Információszabadság Hatósághoz (NAIH):
 				</p>
 				<p class="text-sm">
-					Weboldal: <a href="https://naih.hu" class="text-green-700 underline">https://naih.hu</a
-					><br />
+					Weboldal: <a href="https://naih.hu" class="text-gray-800 underline">https://naih.hu</a><br
+					/>
 					Cím: 1055 Budapest, Falk Miksa utca 9-11.
 				</p>
 			</div>

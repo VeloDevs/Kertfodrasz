@@ -3,6 +3,7 @@
 
 @theme {
 	--color-primary: #238121;
+	--color-sage: #eef3e8;
 	--color-background-light: #ffffff;
 	--color-surface-dark: #1a232e;
 	--color-accent: #eef5ff;
@@ -17,9 +18,15 @@
 
 @layer base {
 	html {
+		color-scheme: light;
 		scroll-behavior: smooth;
 		scroll-padding-top: 5rem;
 		scrollbar-gutter: stable;
+	}
+
+	body {
+		background-color: var(--color-background-light);
+		color: var(--color-gray-900);
 	}
 
 	h1,
@@ -36,7 +43,7 @@
 	}
 
 	:focus-visible {
-		outline: 2px solid #238121;
+		outline: 2px solid var(--color-primary);
 		outline-offset: 2px;
 	}
 
@@ -54,13 +61,13 @@
 @layer utilities {
 	@keyframes soft-glow {
 		0% {
-			box-shadow: 0 0 0 0 rgba(35, 129, 33, 0.4);
+			box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-primary) 40%, transparent);
 		}
 		70% {
-			box-shadow: 0 0 0 15px rgba(35, 129, 33, 0);
+			box-shadow: 0 0 0 15px transparent;
 		}
 		100% {
-			box-shadow: 0 0 0 0 rgba(35, 129, 33, 0);
+			box-shadow: 0 0 0 0 transparent;
 		}
 	}
 

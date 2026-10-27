@@ -1,12 +1,15 @@
 <script lang="ts">
+	import BrandLogo from './BrandLogo.svelte';
 </script>
 
-<div class="hidden bg-[#137d38] py-1 text-sm text-white md:block"></div>
+<div class="bg-primary hidden py-1 text-sm text-white md:block"></div>
 <footer class="mt-auto w-full bg-[#161616] pt-16 pb-8 text-sm text-gray-400">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
 			<div class="flex flex-col gap-6">
-				<a href="/" class="text-2xl font-black text-white">Kertfodrász</a>
+				<a href="/" aria-label="Kertfodrász – kezdőlap" class="self-start"
+					><BrandLogo large light /></a
+				>
 				<p class="max-w-xs leading-relaxed">
 					Szakértelem és szenvedély a kertápolásban. Álmaid kertje csak egy karnyújtásnyira van
 					Baranya megyében.
@@ -77,7 +80,7 @@
 		</div>
 	</div>
 </footer>
-<div class="hidden bg-[#137d38] py-1 text-sm text-white md:block">
+<div class="bg-primary hidden py-1 text-sm text-white md:block">
 	<div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<div class="flex w-full items-center justify-center">
 			<span>© Kertfodrász 2013-2026</span>

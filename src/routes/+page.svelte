@@ -1,3 +1,14 @@
+<script lang="ts">
+	import ServiceCardImage from '$lib/components/ServiceCardImage.svelte';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
+	const desktopImage = $derived(
+		data.hero?.main.imageUrl ? data.hero.main : data.hero?.detail.imageUrl ? data.hero.detail : null
+	);
+	const mobileImage = $derived(data.hero?.detail.imageUrl ? data.hero.detail : desktopImage);
+</script>
+
 <svelte:head>
 	<title>Kertfodrász | Precíz kertápolás kompromisszumok nélkül</title>
 	<meta
@@ -11,21 +22,24 @@
 		<div
 			class="relative isolate flex min-h-[90vh] items-end overflow-hidden bg-gray-900 pb-12 sm:rounded-[2.5rem] sm:shadow-2xl lg:max-h-[880px] lg:min-h-[700px] lg:items-center lg:pb-0"
 		>
-			<img
-				src="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/470885164_9348028501897429_8619858266317203305_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=4HusygM8r5IQ7kNvwF0vP2V&_nc_oc=Adn03FCt6Yp0h59yao_dvDLmbtPWPqlkCSjDnQ4wTTeUOWsiXg-35NpLM1ct-gygp30GGrMqDGQzELlHAuSLj8_s&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&_nc_gid=4WFYhUgqqXBqXKenSPe1mQ&oh=00_AfssEyoc24MZsExfV273-IqwiWtiKDTWysPXc0V4J5yBRA&oe=699D2579"
-				alt="Kertész munka közben mobilon"
-				loading="eager"
-				fetchpriority="high"
-				class="absolute inset-0 -z-10 bg-linear-to-t from-gray-900/75 via-gray-900/40 to-transparent lg:hidden"
-			/>
-
-			<img
-				src="https://i0.wp.com/kertfodrasz.hu/wp-content/uploads/2020/06/content_1_kertesz_peter-min.jpg?w=800&ssl=1"
-				alt="Kertész munka közben asztali gépen"
-				loading="eager"
-				fetchpriority="high"
-				class="absolute inset-0 -z-10 hidden h-full w-full -scale-x-100 object-cover object-center lg:block"
-			/>
+			{#if mobileImage}
+				<img
+					src={mobileImage.imageUrl}
+					alt={mobileImage.alt}
+					loading="eager"
+					fetchpriority="high"
+					class="absolute inset-0 -z-10 h-full w-full object-cover object-center lg:hidden"
+				/>
+			{/if}
+			{#if desktopImage}
+				<img
+					src={desktopImage.imageUrl}
+					alt={desktopImage.alt}
+					loading="eager"
+					fetchpriority="high"
+					class="absolute inset-0 -z-10 hidden h-full w-full object-cover object-center lg:block"
+				/>
+			{/if}
 
 			<div
 				class="absolute inset-0 -z-10 bg-linear-to-t from-gray-900/95 via-gray-900/70 to-transparent lg:hidden"
@@ -38,30 +52,30 @@
 			<div class="relative z-10 w-full px-6 pt-32 lg:px-16 lg:pt-0">
 				<div class="max-w-2xl text-left lg:max-w-3xl">
 					<div
-						class="mb-6 inline-flex items-center rounded-full border border-green-400/30 bg-green-900/60 px-4 py-1.5 text-sm font-semibold text-green-300 shadow-sm backdrop-blur-sm lg:mb-8"
+						class="border-sage bg-sage mb-6 inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-semibold text-gray-800 shadow-sm lg:mb-8"
 					>
-						<span class="mr-2 flex h-2 w-2 animate-pulse rounded-full bg-green-400"></span>
-						Kozármisleny és vonzáskörzete
+						<span class="bg-primary mr-2 flex h-2 w-2 rounded-full" aria-hidden="true"></span>
+						Dél-Dunántúl és vonzáskörzete.
 					</div>
 
 					<h1
 						class="text-4xl font-extrabold tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl"
 					>
-						Precíz kertápolás, <br />
-						<span class="text-green-400">kompromisszumok nélkül.</span>
+						Precíz kertépítés, <br />
+						<span class="text-sage">kompromisszumok nélkül.</span>
 					</h1>
 
 					<p
 						class="mt-4 max-w-2xl text-base leading-7 text-gray-100 drop-shadow-sm lg:mt-6 lg:text-lg lg:leading-8"
 					>
 						Szakértelem és szenvedély a kertápolásban. Álmaid kertje csak egy karnyújtásnyira van.
-						Ránk bízhatod a fűnyírást, sövénynyírást és a teljes körű zöldterület-kezelést.
+						Ránk bízhatod a kerted teljeskörú építését és gondozását.
 					</p>
 
 					<div class="mt-8 flex flex-col gap-4 sm:flex-row lg:mt-10">
 						<a
 							href="/contact"
-							class="inline-flex items-center justify-center rounded-md bg-green-500 px-8 py-3.5 text-base font-bold text-white shadow-lg transition-all hover:scale-105 hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 lg:text-lg"
+							class="bg-primary focus-visible:outline-sage inline-flex items-center justify-center rounded-md px-8 py-3.5 text-base font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 lg:text-lg"
 						>
 							Ajánlatot kérek
 						</a>
@@ -84,13 +98,13 @@
 <section id="szolgaltatasok" class="bg-gray-50 py-20 sm:py-28">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="mx-auto mb-16 max-w-3xl text-center">
-			<span class="text-sm font-semibold tracking-[0.3em] text-green-600 uppercase"
+			<span class="text-sm font-semibold tracking-[0.3em] text-gray-800 uppercase"
 				>Szolgáltatásaink</span
 			>
 			<h2 class="mt-4 text-3xl font-light tracking-tight text-gray-900 sm:text-4xl">
 				Prémium <span class="font-semibold">kertészeti megoldások</span>
 			</h2>
-			<div class="mx-auto mt-6 h-px w-16 bg-green-200"></div>
+			<div class="bg-sage mx-auto mt-6 h-px w-16"></div>
 		</div>
 
 		<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -99,18 +113,16 @@
 			>
 				<div class="relative h-64 w-full overflow-hidden lg:h-auto lg:w-3/5">
 					<a href="/references" aria-label="Teljeskörű Kertépítés referenciák megtekintése">
-						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20190721_130046.jpg"
-							alt="Teljeskörű Kertépítés"
-							loading="lazy"
-							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+						<ServiceCardImage
+							image={data.services['garden-construction']}
+							label="Teljeskörű Kertépítés"
 						/>
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-8 lg:w-2/5 lg:p-12">
 					<h3 class="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl">Teljeskörű Kertépítés</h3>
 					<p class="mb-8 text-sm leading-relaxed text-gray-500 sm:text-base">
-						A tervezéstől a megvalósításig. Elmondja álmai kertjét, mi pedig a nulláról felépítjük,
+						A tervezéstől a megvalósításig. Megtervezzük álmaid kertjét és nulláról felépítjük,
 						beleértve a földmunkát, növénytelepítést és a végső simításokat.
 					</p>
 					<a
@@ -119,7 +131,7 @@
 						class="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-gray-900 uppercase"
 					>
 						Érdekel <span
-							class="block h-px w-8 bg-green-500 transition-all duration-300 group-hover:w-12"
+							class="bg-primary block h-px w-8 transition-all duration-300 group-hover:w-12"
 						></span>
 					</a>
 				</div>
@@ -130,12 +142,7 @@
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
 					<a href="/references" aria-label="Öntözőrendszer építés referenciák">
-						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/PANO_20200818_163842.jpg"
-							alt="Öntözőrendszer építés"
-							loading="lazy"
-							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-						/>
+						<ServiceCardImage image={data.services['irrigation']} label="Öntözőrendszer építés" />
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-6 sm:w-3/5">
@@ -149,7 +156,7 @@
 					<a
 						href="/contact"
 						aria-label="Részletek az öntözőrendszer építésről"
-						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-gray-950 hover:underline"
 						>Részletek &rarr;</a
 					>
 				</div>
@@ -160,11 +167,9 @@
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
 					<a href="/references" aria-label="Kerttervezési tanácsadás referenciák">
-						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20190721_130046.jpg"
-							alt="Kerttervezés Tanácsadás"
-							loading="lazy"
-							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+						<ServiceCardImage
+							image={data.services['consultation']}
+							label="Kerttervezés Tanácsadás"
 						/>
 					</a>
 				</div>
@@ -177,7 +182,7 @@
 					<a
 						href="/contact"
 						aria-label="Részletek a kertészeti tanácsadásról"
-						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-gray-950 hover:underline"
 						>Részletek &rarr;</a
 					>
 				</div>
@@ -188,24 +193,19 @@
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
 					<a href="/references" aria-label="Gyepszőnyegezés referenciák">
-						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_100622.jpg"
-							alt="Gyepszőnyegezés"
-							loading="lazy"
-							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-						/>
+						<ServiceCardImage image={data.services['lawn']} label="Gyepszőnyegezés" />
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-6 sm:w-3/5">
 					<h3 class="mb-2 text-xl font-bold text-gray-900">Gyepszőnyegezés, füvesítés</h3>
 					<p class="mb-4 text-xs leading-relaxed text-gray-500">
-						Azonnali zöld kert prémium gyepszőnyeggel, vakondhálózva, vagy költséghatékonyabb,
-						hagyományos füvesítés magvetéssel és talaj-előkészítéssel.
+						Azonnali zöld kert prémium gyepszőnyeggel, vakondhálózva, vagy hagyományos füvesítés
+						magvetéssel és talaj-előkészítéssel.
 					</p>
 					<a
 						href="/contact"
 						aria-label="Részletek a gyepszőnyegezésről és füvesítésről"
-						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-gray-950 hover:underline"
 						>Részletek &rarr;</a
 					>
 				</div>
@@ -216,24 +216,19 @@
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
 					<a href="/references" aria-label="Műfű telepítési referenciák">
-						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_094432.jpg"
-							alt="Műfű telepítés"
-							loading="lazy"
-							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-						/>
+						<ServiceCardImage image={data.services['artificial-grass']} label="Műfű telepítés" />
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-6 sm:w-3/5">
 					<h3 class="mb-2 text-xl font-bold text-gray-900">Műfüves területek kialakítása</h3>
 					<p class="mb-4 text-xs leading-relaxed text-gray-500">
-						Gondozásmentes, örökzöld, prémium műfű telepítése teraszokra vagy kertekbe az egész
-						évben zöldellő felületért.
+						Élvezd a tökéletesen zöld kertet egész évben! Prémium, gondozásmentes és kiskedvencbarát
+						műfüvet telepítünk kertekbe és teraszokra, hogy több időd maradjon a pihenésre.
 					</p>
 					<a
 						href="/contact"
 						aria-label="Részletek a műfű telepítésről"
-						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-gray-950 hover:underline"
 						>Részletek &rarr;</a
 					>
 				</div>
@@ -244,12 +239,7 @@
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
 					<a href="/references" aria-label="Kertgondozási referenciák">
-						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fuvesites-gyepszonyeg-mufu/IMG_20200827_094432.jpg"
-							alt="Kertgondozás"
-							loading="lazy"
-							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-						/>
+						<ServiceCardImage image={data.services['maintenance']} label="Kertgondozás" />
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-6 sm:w-3/5">
@@ -261,7 +251,7 @@
 					<a
 						href="/contact"
 						aria-label="Részletek a teljeskörű kertgondozásról"
-						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-gray-950 hover:underline"
 						>Részletek &rarr;</a
 					>
 				</div>
@@ -272,12 +262,7 @@
 			>
 				<div class="relative h-48 w-full overflow-hidden sm:h-auto sm:w-2/5">
 					<a href="/references" aria-label="Fakivágási referenciák">
-						<img
-							src="https://kertfodrasz.hu/wp-content/gallery/fakivagas-metszes/IMG_20200229_140008.jpg"
-							alt="Fakivágás"
-							loading="lazy"
-							class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-						/>
+						<ServiceCardImage image={data.services['tree-removal']} label="Fakivágás" />
 					</a>
 				</div>
 				<div class="flex flex-col justify-center p-6 sm:w-3/5">
@@ -289,7 +274,7 @@
 					<a
 						href="/contact"
 						aria-label="Részletek a fakivágásról"
-						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-green-600"
+						class="text-[10px] font-bold tracking-wider text-gray-900 uppercase hover:text-gray-950 hover:underline"
 						>Részletek &rarr;</a
 					>
 				</div>
@@ -301,8 +286,7 @@
 <section id="velemenyek" class="bg-white py-20 sm:py-28">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="mx-auto mb-16 max-w-3xl text-center">
-			<span class="text-sm font-semibold tracking-[0.3em] text-green-600 uppercase">Vélemények</span
-			>
+			<span class="text-sm font-semibold tracking-[0.3em] text-gray-800 uppercase">Vélemények</span>
 			<h2 class="mt-4 text-3xl font-light tracking-tight text-gray-900 sm:text-4xl">
 				Akik már minket <span class="font-semibold italic">választottak</span>
 			</h2>
@@ -343,11 +327,11 @@
 
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
 			<div
-				class="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl hover:ring-green-100"
+				class="group hover:ring-sage relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl"
 			>
 				<div>
 					<svg
-						class="mb-4 h-8 w-8 text-green-200"
+						class="text-sage mb-4 h-8 w-8"
 						fill="currentColor"
 						viewBox="0 0 32 32"
 						aria-hidden="true"
@@ -366,7 +350,7 @@
 
 				<div class="mt-8 flex items-center gap-4">
 					<div
-						class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-700"
+						class="bg-sage flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold text-gray-800"
 					>
 						J.SZ.
 					</div>
@@ -378,11 +362,11 @@
 			</div>
 
 			<div
-				class="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl hover:ring-green-100"
+				class="group hover:ring-sage relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl"
 			>
 				<div>
 					<svg
-						class="mb-4 h-8 w-8 text-green-200"
+						class="text-sage mb-4 h-8 w-8"
 						fill="currentColor"
 						viewBox="0 0 32 32"
 						aria-hidden="true"
@@ -399,7 +383,7 @@
 
 				<div class="mt-8 flex items-center gap-4">
 					<div
-						class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-700"
+						class="bg-sage flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold text-gray-800"
 					>
 						S.É.
 					</div>
@@ -411,11 +395,11 @@
 			</div>
 
 			<div
-				class="group relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl hover:ring-green-100"
+				class="group hover:ring-sage relative flex flex-col justify-between overflow-hidden rounded-[2.5rem] bg-gray-50 p-8 ring-1 ring-gray-200/50 transition-all duration-300 hover:bg-white hover:shadow-xl"
 			>
 				<div>
 					<svg
-						class="mb-4 h-8 w-8 text-green-200"
+						class="text-sage mb-4 h-8 w-8"
 						fill="currentColor"
 						viewBox="0 0 32 32"
 						aria-hidden="true"
@@ -432,7 +416,7 @@
 
 				<div class="mt-8 flex items-center gap-4">
 					<div
-						class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-100 font-bold text-green-700"
+						class="bg-sage flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold text-gray-800"
 					>
 						V.Z.
 					</div>
@@ -475,7 +459,7 @@
 		<div class="grid grid-cols-1 gap-12 md:grid-cols-3">
 			<div class="relative text-center">
 				<div
-					class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-2xl font-bold text-white shadow-lg"
+					class="bg-primary mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full text-2xl font-bold text-white shadow-lg"
 				>
 					1
 				</div>
@@ -487,7 +471,7 @@
 			</div>
 			<div class="relative text-center">
 				<div
-					class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-2xl font-bold text-white shadow-lg"
+					class="bg-primary mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full text-2xl font-bold text-white shadow-lg"
 				>
 					2
 				</div>
@@ -498,7 +482,7 @@
 			</div>
 			<div class="relative text-center">
 				<div
-					class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-2xl font-bold text-white shadow-lg"
+					class="bg-primary mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full text-2xl font-bold text-white shadow-lg"
 				>
 					3
 				</div>

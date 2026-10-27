@@ -1,4 +1,5 @@
 <script lang="ts">
+	import BrandLogo from './BrandLogo.svelte';
 	import { page } from '$app/state';
 	import { slide } from 'svelte/transition';
 
@@ -13,12 +14,12 @@
 	}
 </script>
 
-<div class="hidden bg-[#137d38] py-2 text-sm text-white md:block">
+<div class="bg-primary hidden py-2 text-sm text-white md:block">
 	<div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 		<div class="flex items-center gap-6">
 			<a
 				href="tel:+36205209276"
-				class="flex items-center gap-2 transition hover:text-gray-200"
+				class="flex items-center gap-2 transition hover:text-white hover:underline"
 				aria-label="Telefonszám: +36 20 520 9276"
 			>
 				<svg
@@ -42,7 +43,7 @@
 
 			<a
 				href="mailto:kertfodrasz@gmail.com"
-				class="flex items-center gap-2 transition hover:text-gray-200"
+				class="flex items-center gap-2 transition hover:text-white hover:underline"
 				aria-label="E-mail cím: kertfodrasz@gmail.com"
 			>
 				<svg
@@ -70,7 +71,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="TikTok oldalunk megtekintése"
-				class="flex size-9 items-center justify-center transition hover:text-gray-200"
+				class="flex size-9 items-center justify-center transition hover:text-white hover:underline"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +93,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="Facebook oldalunk megtekintése"
-				class="flex size-9 items-center justify-center transition hover:text-gray-200"
+				class="flex size-9 items-center justify-center transition hover:text-white hover:underline"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +115,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="Instagram oldalunk megtekintése"
-				class="flex size-9 items-center justify-center transition hover:text-gray-200"
+				class="flex size-9 items-center justify-center transition hover:text-white hover:underline"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +142,9 @@
 	<nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Fő navigáció">
 		<div class="flex h-16 items-center justify-between">
 			<div class="shrink-0">
-				<a href="/" class="text-primary text-xl font-black" onclick={closeMenu}>Kertfodrász</a>
+				<a href="/" aria-label="Kertfodrász – kezdőlap" class="block" onclick={closeMenu}
+					><BrandLogo /></a
+				>
 			</div>
 
 			<div class="hidden items-center space-x-2 md:flex">
@@ -173,7 +176,7 @@
 					aria-label={isMobileMenuOpen ? 'Menü bezárása' : 'Menü megnyitása'}
 					aria-expanded={isMobileMenuOpen}
 					aria-controls="mobile-menu"
-					class="relative flex size-11 cursor-pointer items-center justify-center rounded-md text-gray-600 focus:ring-2 focus:ring-green-600 focus:outline-none"
+					class="focus:ring-primary relative flex size-11 cursor-pointer items-center justify-center rounded-md text-gray-600 focus:ring-2 focus:outline-none"
 					onclick={toggleMenu}
 				>
 					<div class="flex w-6 flex-col items-end gap-1.5">
@@ -242,7 +245,7 @@
 	}
 	.nav-link:hover,
 	.nav-link.active {
-		color: #238121;
+		color: var(--color-gray-950);
 	}
 
 	.underline-animation {
@@ -251,7 +254,7 @@
 		left: 1rem;
 		right: 1rem;
 		height: 2px;
-		background-color: #238121;
+		background-color: var(--color-primary);
 		transform: scaleX(0);
 		transition: transform 0.3s ease-out;
 		transform-origin: left;
@@ -270,6 +273,6 @@
 		color: #374151;
 	}
 	.mobile-link.active {
-		color: #238121;
+		color: var(--color-gray-950);
 	}
 </style>

@@ -1,3 +1,6 @@
+import type { Pagination } from './pagination';
+import type { PageHero } from './hero';
+
 export type PlantCategory = {
 	name: string;
 	slug: string;
@@ -33,6 +36,8 @@ export type PlantDetail = {
 };
 
 export type PlantIndexResponse = {
+	pagination: Pagination;
+	hero?: PageHero;
 	categories: PlantCategory[];
 	selectedCategorySlug: string;
 	searchQuery: string;

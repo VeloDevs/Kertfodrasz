@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { modal } from '$lib/actions/modal';
+	import { jsonLdScript as serializeJsonLd } from '$lib/json-ld.js';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -83,9 +85,7 @@
 		]
 	});
 
-	const breadcrumbScript = $derived(
-		`<script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd)}</` + `script>`
-	);
+	const breadcrumbScript = $derived(serializeJsonLd(breadcrumbJsonLd));
 </script>
 
 <svelte:head>
@@ -98,22 +98,16 @@
 	{@html breadcrumbScript}
 </svelte:head>
 
-<section
-	class="relative overflow-hidden bg-[linear-gradient(180deg,#f4efe4_0%,#f8faf6_55%,#eef5ec_100%)]"
->
-	<div
-		class="absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top_left,rgba(35,129,33,0.18),transparent_34%)]"
-	></div>
-
+<section class="relative overflow-hidden bg-stone-50">
 	<div
 		class="relative mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8 lg:py-14"
 	>
 		<!-- Visible Breadcrumbs -->
-		<nav class="flex items-center text-xs font-semibold text-[#556855]" aria-label="Morzsamenü">
+		<nav class="flex items-center text-xs font-semibold text-gray-600" aria-label="Morzsamenü">
 			<ol class="flex items-center space-x-2">
-				<li><a href="/" class="hover:text-green-800">Kezdőlap</a></li>
+				<li><a href="/" class="hover:text-gray-950 hover:underline">Kezdőlap</a></li>
 				<li><span class="mx-1 text-gray-400">/</span></li>
-				<li><a href="/plants" class="hover:text-green-800">Növénytár</a></li>
+				<li><a href="/plants" class="hover:text-gray-950 hover:underline">Növénytár</a></li>
 				<li><span class="mx-1 text-gray-400">/</span></li>
 				<li class="text-gray-900" aria-current="page">{data.plant.name}</li>
 			</ol>
@@ -121,7 +115,7 @@
 
 		<a
 			href="/plants"
-			class="inline-flex w-fit items-center gap-2 rounded-full border border-[#c8d5c0] bg-white/80 px-4 py-2 text-sm font-semibold text-[#2f5635] transition hover:border-[#8aa088] hover:bg-white"
+			class="hover:border-primary inline-flex w-fit items-center gap-2 rounded-full border border-gray-200 bg-white/80 px-4 py-2 text-sm font-semibold text-gray-800 transition hover:bg-white"
 		>
 			<span aria-hidden="true">←</span>
 			Vissza a növénytárhoz
@@ -129,40 +123,36 @@
 
 		<div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-end">
 			<div class="max-w-4xl space-y-5">
-				<p class="text-xs font-semibold tracking-[0.25em] text-[#678067] uppercase">
+				<p class="text-xs font-semibold tracking-[0.25em] text-gray-600 uppercase">
 					Növény adatlap
 				</p>
-				<h1 class="text-4xl font-black tracking-tight text-[#1e2d1f] sm:text-5xl lg:text-6xl">
+				<h1 class="text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
 					{data.plant.name}
 				</h1>
-				<p class="max-w-3xl text-lg leading-8 text-[#556855]">
+				<p class="max-w-3xl text-lg leading-8 text-gray-600">
 					{data.plant.description ??
 						'Nyisd meg bármelyik képet teljes méretben, és nézd meg részletesen a növény habitusát.'}
 				</p>
 			</div>
 
 			<div
-				class="grid gap-4 rounded-[30px] border border-white/70 bg-white/75 p-6 shadow-[0_24px_60px_rgba(45,68,42,0.12)] backdrop-blur-sm"
+				class="grid gap-4 rounded-[30px] border border-white/70 bg-white/75 p-6 shadow-[0_24px_60px_rgba(0,0,0,0.12)] backdrop-blur-sm"
 			>
 				<div>
-					<p class="text-xs font-semibold tracking-[0.22em] text-[#6a816a] uppercase">Képek</p>
-					<p class="mt-2 text-xl font-bold text-[#223424]">{data.plant.images.length} db</p>
+					<p class="text-xs font-semibold tracking-[0.22em] text-gray-600 uppercase">Képek</p>
+					<p class="mt-2 text-xl font-bold text-gray-900">{data.plant.images.length} db</p>
 				</div>
 				<div>
-					<p class="text-xs font-semibold tracking-[0.22em] text-[#6a816a] uppercase">Kategóriák</p>
+					<p class="text-xs font-semibold tracking-[0.22em] text-gray-600 uppercase">Kategóriák</p>
 					<div class="mt-2 flex flex-wrap gap-2">
 						{#if data.plant.categories.length > 0}
 							{#each data.plant.categories as category (category.slug)}
-								<span
-									class="rounded-full bg-[#eef3e8] px-3 py-1 text-xs font-semibold text-[#305338]"
-								>
+								<span class="bg-sage rounded-full px-3 py-1 text-xs font-semibold text-gray-800">
 									{category.name}
 								</span>
 							{/each}
 						{:else}
-							<span
-								class="rounded-full bg-[#f1f4ed] px-3 py-1 text-xs font-semibold text-[#70826f]"
-							>
+							<span class="bg-sage rounded-full px-3 py-1 text-xs font-semibold text-gray-600">
 								Kategória nélkül
 							</span>
 						{/if}
@@ -173,7 +163,7 @@
 	</div>
 </section>
 
-<section class="bg-[#f7f8f3] py-16 sm:py-20">
+<section class="bg-stone-50 py-16 sm:py-20">
 	<div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 		{#if data.plant.images.length > 0}
 			<div class="grid auto-rows-[220px] gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -182,7 +172,7 @@
 						type="button"
 						onclick={() => openLightbox(index)}
 						aria-label={`Kép megnyitása: ${image.alt}`}
-						class={`group relative overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_20px_50px_rgba(45,68,42,0.08)] ${tileClass(index)}`}
+						class={`group relative overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)] ${tileClass(index)}`}
 					>
 						<img
 							src={image.imageUrl}
@@ -192,7 +182,7 @@
 						/>
 						{#if image.isCover}
 							<div
-								class="absolute top-4 left-4 rounded-full bg-[#1f4d2c]/90 px-3 py-1 text-xs font-semibold text-white"
+								class="bg-primary absolute top-4 left-4 rounded-full px-3 py-1 text-xs font-semibold text-white"
 							>
 								Borítókép
 							</div>
@@ -207,10 +197,10 @@
 			</div>
 		{:else}
 			<div
-				class="rounded-4xl border border-dashed border-[#c8d5c0] bg-white/70 px-8 py-16 text-center shadow-[0_20px_50px_rgba(45,68,42,0.06)]"
+				class="rounded-4xl border border-dashed border-gray-200 bg-white/70 px-8 py-16 text-center shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
 			>
-				<p class="text-sm font-semibold tracking-[0.25em] text-[#6a806a] uppercase">Üres galéria</p>
-				<h2 class="mt-4 text-3xl font-black text-[#243225]">
+				<p class="text-sm font-semibold tracking-[0.25em] text-gray-600 uppercase">Üres galéria</p>
+				<h2 class="mt-4 text-3xl font-black text-gray-900">
 					Ehhez a növényhez még nincs feltöltött kép.
 				</h2>
 			</div>
@@ -221,9 +211,13 @@
 <svelte:window onkeydown={handleKeydown} />
 
 {#if activeImageIndex !== null}
-	<div
-		class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 sm:p-8"
-		role="dialog"
+	<dialog
+		use:modal
+		oncancel={(event) => {
+			event.preventDefault();
+			closeLightbox();
+		}}
+		class="fixed inset-0 z-50 m-0 flex h-dvh max-h-none w-screen max-w-none items-center justify-center border-0 bg-black/85 p-4 sm:p-8"
 		aria-modal="true"
 		aria-label={`${data.plant.name} galéria nagyítás`}
 	>
@@ -271,5 +265,5 @@
 		>
 			×
 		</button>
-	</div>
+	</dialog>
 {/if}

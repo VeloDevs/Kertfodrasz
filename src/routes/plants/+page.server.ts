@@ -16,6 +16,7 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 		query.set('q', searchQuery);
 	}
 
+	query.set('page', url.searchParams.get('page') || '1');
 	const search = query.toString();
 
 	return fetchPlantApi<PlantIndexResponse>(

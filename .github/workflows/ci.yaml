@@ -25,6 +25,9 @@ jobs:
       - name: Install dependecies
         run: bun ci
 
+      - name: Regression tests
+        run: bun run test
+
       - name: Build test
         run: bun run build
 
