@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { env } from '$env/dynamic/public';
+	import * as env from '$app/env/public';
 
 	const DEFAULT_BACKEND_URL = 'http://127.0.0.1:8000';
 	const PUBLIC_BACKEND_URL = (env.PUBLIC_BACKEND_URL || DEFAULT_BACKEND_URL).replace(/\/$/, '');

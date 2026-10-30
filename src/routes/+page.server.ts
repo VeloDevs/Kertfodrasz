@@ -1,6 +1,6 @@
-import { env } from '$env/dynamic/private';
-import type { ServiceImages } from '$lib/types/service-image';
-import type { PageHero } from '$lib/types/hero';
+import * as env from '$app/env/private';
+import type { ServiceImages } from '#lib/types/service-image.js';
+import type { PageHero } from '#lib/types/hero.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch }) => {

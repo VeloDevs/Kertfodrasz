@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { HeroImage } from '$lib/types/hero';
+	import type { HeroImage } from '#lib/types/hero.js';
 
 	let { image, label }: { image?: HeroImage; label: string } = $props();
 	let failedUrl = $state<string | null>(null);

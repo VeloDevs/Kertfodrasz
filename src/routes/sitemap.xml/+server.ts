@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
-import { fetchBackendApi } from '$lib/server/backend-api';
-import type { Pagination } from '$lib/types/pagination';
+import { fetchBackendApi } from '#lib/server/backend-api.js';
+import type { Pagination } from '#lib/types/pagination.js';
 import { error } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async ({ fetch }) => {

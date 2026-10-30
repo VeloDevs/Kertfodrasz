@@ -1,6 +1,6 @@
 <script lang="ts">
 	import HeroImageSlot from './HeroImageSlot.svelte';
-	import type { PageHero } from '$lib/types/hero';
+	import type { PageHero } from '#lib/types/hero.js';
 
 	let {
 		hero,

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { SvelteURLSearchParams } from 'svelte/reactivity';
 	import { page } from '$app/state';
-	import type { Pagination } from '$lib/types/pagination';
+	import type { Pagination } from '#lib/types/pagination.js';
 	let { pagination }: { pagination: Pagination } = $props();
 	function href(number: number) {
-		const params = new SvelteURLSearchParams(page.url.searchParams);
+		const params = new SvelteURLSearchParams(page.url.searchParams.toString());
 		params.set('page', String(number));
 		return `${page.url.pathname}?${params}`;
 	}

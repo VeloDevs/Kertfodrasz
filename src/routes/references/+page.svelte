@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Pagination from '$lib/components/Pagination.svelte';
-	import HeroCollage from '$lib/components/HeroCollage.svelte';
+	import Pagination from '#lib/components/Pagination.svelte';
+	import HeroCollage from '#lib/components/HeroCollage.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();

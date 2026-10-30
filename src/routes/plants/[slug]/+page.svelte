@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { modal } from '$lib/actions/modal';
-	import { jsonLdScript as serializeJsonLd } from '$lib/json-ld.js';
+	import { modal } from '#lib/actions/modal.js';
+	import { jsonLdScript as serializeJsonLd } from '#lib/json-ld.js';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();

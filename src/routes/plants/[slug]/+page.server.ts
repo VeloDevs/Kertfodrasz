@@ -1,5 +1,5 @@
-import { fetchPlantApi } from '$lib/server/plant-api';
-import type { PlantDetailResponse } from '$lib/types/plant';
+import { fetchPlantApi } from '#lib/server/plant-api.js';
+import type { PlantDetailResponse } from '#lib/types/plant.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {

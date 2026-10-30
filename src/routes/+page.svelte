@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ServiceCardImage from '$lib/components/ServiceCardImage.svelte';
+	import ServiceCardImage from '#lib/components/ServiceCardImage.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();

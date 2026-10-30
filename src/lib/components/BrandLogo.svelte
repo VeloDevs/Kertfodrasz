@@ -1,8 +1,8 @@
 <script lang="ts">
-	import wordmark from '$lib/assets/kertfodrasz-wordmark.svg';
-	import whiteWordmark from '$lib/assets/kertfodrasz-wordmark-white.svg';
-	import emblem from '$lib/assets/kertfodrasz-emblem.svg';
-	import whiteEmblem from '$lib/assets/kertfodrasz-emblem-white.svg';
+	import wordmark from '#lib/assets/kertfodrasz-wordmark.svg';
+	import whiteWordmark from '#lib/assets/kertfodrasz-wordmark-white.svg';
+	import emblem from '#lib/assets/kertfodrasz-emblem.svg';
+	import whiteEmblem from '#lib/assets/kertfodrasz-emblem-white.svg';
 
 	let { large = false, light = false }: { large?: boolean; light?: boolean } = $props();
 </script>

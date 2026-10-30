@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Pagination from '$lib/components/Pagination.svelte';
-	import HeroCollage from '$lib/components/HeroCollage.svelte';
+	import Pagination from '#lib/components/Pagination.svelte';
+	import HeroCollage from '#lib/components/HeroCollage.svelte';
 	import { goto } from '$app/navigation';
 	import type { PageData } from './$types';
 
@@ -32,9 +32,8 @@
 		}
 
 		goto(buildPlantsHref(data.selectedCategorySlug, inputValue), {
-			replaceState: true,
-			noScroll: true,
-			keepFocus: true
+			replace: true,
+			reset: false
 		});
 	}
 

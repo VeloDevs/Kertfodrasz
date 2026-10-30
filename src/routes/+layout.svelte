@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { jsonLdScript as serializeJsonLd } from '$lib/json-ld.js';
+	import { jsonLdScript as serializeJsonLd } from '#lib/json-ld.js';
 	import '../app.css';
 	import { page } from '$app/state';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '#lib/assets/favicon.svg';
 	import NavBar from '../lib/components/NavBar.svelte';
 	import Footer from '../lib/components/Footer.svelte';
 

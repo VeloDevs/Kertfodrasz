@@ -1,5 +1,5 @@
-import { fetchReferenceApi } from '$lib/server/reference-api';
-import type { ReferenceDetailResponse } from '$lib/types/reference';
+import { fetchReferenceApi } from '#lib/server/reference-api.js';
+import type { ReferenceDetailResponse } from '#lib/types/reference.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
