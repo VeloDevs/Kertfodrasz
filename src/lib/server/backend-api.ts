@@ -1,5 +1,7 @@
 import * as env from '$app/env/private';
+import * as publicEnv from '$app/env/public';
 import { error } from '@sveltejs/kit';
+import { publicMediaUrls } from './public-media';
 
 export async function fetchBackendApi<T>(
 	fetchFn: typeof fetch,
@@ -20,7 +22,11 @@ export async function fetchBackendApi<T>(
 	}
 	if (!response.ok) error(response.status, message);
 	try {
-		return (await response.json()) as T;
+		return publicMediaUrls(
+			(await response.json()) as T,
+			env.BACKEND_URL,
+			publicEnv.PUBLIC_BACKEND_URL
+		);
 	} catch {
 		error(502, message);
 	}
