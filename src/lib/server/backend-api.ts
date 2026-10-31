@@ -1,19 +1,20 @@
 import * as env from '$app/env/private';
-import * as publicEnv from '$app/env/public';
 import { error } from '@sveltejs/kit';
 import { publicMediaUrls } from './public-media';
 
 export async function fetchBackendApi<T>(
-	fetchFn: typeof fetch,
+	_fetchFn: typeof fetch,
 	path: string,
 	message: string
 ): Promise<T> {
 	let response: Response;
 	try {
-		response = await fetchFn(
+		response = await globalThis.fetch(
 			`${(env.BACKEND_URL || 'http://127.0.0.1:8000').replace(/\/$/, '')}${path}`,
 			{
 				headers: { accept: 'application/json' },
+				credentials: 'omit',
+				redirect: 'error',
 				signal: AbortSignal.timeout(8000)
 			}
 		);
@@ -22,11 +23,7 @@ export async function fetchBackendApi<T>(
 	}
 	if (!response.ok) error(response.status, message);
 	try {
-		return publicMediaUrls(
-			(await response.json()) as T,
-			env.BACKEND_URL,
-			publicEnv.PUBLIC_BACKEND_URL
-		);
+		return publicMediaUrls((await response.json()) as T, env.BACKEND_URL, '');
 	} catch {
 		error(502, message);
 	}

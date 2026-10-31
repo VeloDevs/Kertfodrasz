@@ -9,9 +9,17 @@ export function publicMediaUrls<T>(payload: T, backendUrl: string, publicBackend
 		return Object.fromEntries(
 			Object.entries(value).map(([key, entry]) => [
 				key,
-				key === 'imageUrl' && typeof entry === 'string' && entry.startsWith(internalPrefix)
+				['imageUrl', 'coverImageUrl'].includes(key) &&
+				typeof entry === 'string' &&
+				entry.startsWith(internalPrefix)
 					? publicPrefix + entry.slice(internalPrefix.length)
-					: visit(entry)
+					: key === 'previewImageUrls' && Array.isArray(entry)
+						? entry.map((item) =>
+								typeof item === 'string' && item.startsWith(internalPrefix)
+									? publicPrefix + item.slice(internalPrefix.length)
+									: item
+							)
+						: visit(entry)
 			])
 		);
 	}

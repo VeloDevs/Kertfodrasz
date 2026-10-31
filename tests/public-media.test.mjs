@@ -30,3 +30,20 @@ test('public images, unrelated hosts and non-image fields remain unchanged', () 
 	];
 	assert.deepEqual(publicMediaUrls(payload, 'http://backend', 'https://api.example'), payload);
 });
+
+test('private admin topology uses same-origin URLs for every image shape', () => {
+	const result = publicMediaUrls(
+		{
+			coverImageUrl: 'http://backend/media/a.webp',
+			previewImageUrls: ['http://backend/media/b.webp'],
+			hero: { main: { imageUrl: 'http://backend/media/c.webp' } }
+		},
+		'http://backend',
+		''
+	);
+	assert.deepEqual(result, {
+		coverImageUrl: '/media/a.webp',
+		previewImageUrls: ['/media/b.webp'],
+		hero: { main: { imageUrl: '/media/c.webp' } }
+	});
+});

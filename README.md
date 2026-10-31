@@ -13,13 +13,13 @@ a `src/env.ts` deklarálja. A backend-URL csak HTTP(S), beágyazott hitelesíté
 A CSP **Report-Only**, tehát diagnosztika, nem blokkoló védelem. A framework
 kezeli saját inline scriptjeinek nonce/hash értékeit; a fejlesztői websocket
 az aktuális frontend-eredetre korlátozott. Google Fonts, a Google-értékelés ikonja
-és a konfigurált publikus backend külön engedélyezett. Inline stílusok az
+külön engedélyezett. A böngésző azonos eredetű űrlap- és médiaútvonalat használ. Inline stílusok az
 átmenetek és stílusattribútumok miatt szükségesek. A `/csp-report` 204-et ad,
 riporttartalmat nem tárol vagy naplóz. A diagnosztika a böngésző konzoljában látható.
 
-A CSP backend-eredete konfigurációbetöltéskor készül. Backendcím-váltás után
-indítsd újra a dev szervert; tesztbuildnél ugyanazt a publikus backendcímet add
-meg buildkor és futtatáskor. A blokkoló CSP és az élesítés későbbi feladat.
+A privát BACKEND_URL kizárólag szerveroldali adatlekérésre szolgál. A böngésző
+nem kap backendcímet. Az Umami-eredet futásidőben kerül a report-only CSP-be.
+A blokkoló CSP és az élesítés későbbi feladat.
 
 Az audit egy alacsony besorolású `deepmerge` jelzést mutat (`GHSA-gcqx-w48m-w2h4`),
 amelyhez a frissítéskor nincs javított kiadás. A Svelte Vite-plugin helyi
@@ -65,16 +65,19 @@ cp .env.example .env
 Required frontend variables:
 
 - `BACKEND_URL`: Laravel API base URL (default fallback in code: `http://127.0.0.1:8000`)
-- `PUBLIC_BACKEND_URL`: Public Laravel base URL used by the contact form submit on the client
+- `CONTACT_PROXY_SECRET`: private shared secret (at least 32 characters), matching the backend.
+  Browser submissions use same-origin `/api/contact`; the server signs the internal request.
+  Configure adapter-node `ADDRESS_HEADER=x-forwarded-for`, `XFF_DEPTH=1` only behind the
+  verified Traefik proxy without direct public ports. The proxy must overwrite/validate the chain.
 
 Contact form spam protection uses a hidden honeypot field, so the frontend must keep the hidden `website` input empty.
 
 ## Docker / preprod
 
-Build with `docker build --build-arg PUBLIC_BACKEND_URL=https://kertfodrasz-api.szaboek.com -t kertfodrasz-frontend:preprod .`.
-The public backend origin must also be supplied at runtime. Set `BACKEND_URL` to
-the reachable internal backend service URL, and `PROTOCOL_HEADER=x-forwarded-proto`
-behind the trusted Traefik proxy. Do not publish the frontend's container port 3000
+Build with `docker build -t kertfodrasz-frontend:preprod .`; no public backend build argument is needed.
+Set `BACKEND_URL` to the internal service, `CONTACT_PROXY_SECRET` to the shared secret,
+and `PROTOCOL_HEADER=x-forwarded-proto` behind the trusted Traefik proxy.
+Use `BODY_SIZE_LIMIT=32768`; the contact relay also checks streamed body size. Do not publish the frontend's container port 3000
 directly on the VPS; route through Traefik.
 
 The image defaults to `NO_INDEX=true`, which adds an `X-Robots-Tag` header to

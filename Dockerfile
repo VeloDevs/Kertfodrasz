@@ -6,10 +6,7 @@ COPY package.json bun.lock .npmrc ./
 RUN bun install --frozen-lockfile
 COPY . .
 
-# The report-only CSP embeds this public origin during the build.
-ARG PUBLIC_BACKEND_URL
-ENV PUBLIC_BACKEND_URL=${PUBLIC_BACKEND_URL}
-RUN test -n "$PUBLIC_BACKEND_URL" && bun run build
+RUN bun run build
 
 FROM node:24-bookworm-slim AS runtime
 WORKDIR /app

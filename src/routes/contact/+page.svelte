@@ -1,9 +1,5 @@
 <script lang="ts">
-	import * as env from '$app/env/public';
-
-	const DEFAULT_BACKEND_URL = 'http://127.0.0.1:8000';
-	const PUBLIC_BACKEND_URL = (env.PUBLIC_BACKEND_URL || DEFAULT_BACKEND_URL).replace(/\/$/, '');
-	const CONTACT_ENDPOINT = `${PUBLIC_BACKEND_URL}/api/contact`;
+	const CONTACT_ENDPOINT = '/api/contact';
 
 	let name = $state('');
 	let email = $state('');
@@ -78,7 +74,12 @@
 				website = '';
 			} else {
 				statusType = 'error';
-				statusMessage = result?.message || 'Sikertelen küldés, próbáld újra később!';
+				statusMessage =
+					Object.values(result?.errors || {})
+						.flat()
+						.join(' ') ||
+					result?.message ||
+					'Sikertelen küldés, próbáld újra később!';
 			}
 		} catch (error) {
 			statusType = 'error';

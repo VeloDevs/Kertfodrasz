@@ -10,7 +10,13 @@ function backendUrl(value: string | undefined): string {
 
 export const variables = defineEnvVars({
 	BACKEND_URL: { schema: backendUrl },
-	PUBLIC_BACKEND_URL: { public: true, schema: backendUrl },
+	CONTACT_PROXY_SECRET: {
+		schema: (value: string | undefined) => {
+			if (value && value.length < 32)
+				throw new Error('Contact proxy secret must contain at least 32 characters');
+			return value || '';
+		}
+	},
 	PUBLIC_UMAMI_URL: {
 		public: true,
 		schema: (value: string | undefined) => {
