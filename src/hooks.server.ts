@@ -1,6 +1,7 @@
 import type { Handle } from '@sveltejs/kit/hooks';
 import { dev } from '$app/env';
 import * as env from '$app/env/private';
+import * as publicEnv from '$app/env/public';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const response = await resolve(event);
@@ -9,12 +10,26 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 	// Permit this dev server's HMR connection without allowing arbitrary websockets.
 	const policy = response.headers.get('Content-Security-Policy-Report-Only');
+	if (
+		policy &&
+		publicEnv.PUBLIC_UMAMI_URL &&
+		publicEnv.PUBLIC_UMAMI_WEBSITE_ID &&
+		publicEnv.PUBLIC_UMAMI_DOMAINS
+	) {
+		response.headers.set(
+			'Content-Security-Policy-Report-Only',
+			policy.replace(/(script-src|connect-src) ([^;]+)/g, `$1 $2 ${publicEnv.PUBLIC_UMAMI_URL}`)
+		);
+	}
 	if (dev && policy) {
 		const socket = new URL(event.url.origin);
 		socket.protocol = socket.protocol === 'https:' ? 'wss:' : 'ws:';
 		response.headers.set(
 			'Content-Security-Policy-Report-Only',
-			policy.replace(/connect-src ([^;]+)/, `connect-src $1 ${socket.origin}`)
+			(response.headers.get('Content-Security-Policy-Report-Only') || policy).replace(
+				/connect-src ([^;]+)/,
+				`connect-src $1 ${socket.origin}`
+			)
 		);
 	}
 

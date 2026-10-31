@@ -2,6 +2,7 @@
 	import { jsonLdScript as serializeJsonLd } from '#lib/json-ld.js';
 	import '../app.css';
 	import { page } from '$app/state';
+	import * as publicEnv from '$app/env/public';
 	import favicon from '#lib/assets/favicon.svg';
 	import NavBar from '../lib/components/NavBar.svelte';
 	import Footer from '../lib/components/Footer.svelte';
@@ -89,6 +90,17 @@
 </script>
 
 <svelte:head>
+	{#if publicEnv.PUBLIC_UMAMI_URL && publicEnv.PUBLIC_UMAMI_WEBSITE_ID && publicEnv.PUBLIC_UMAMI_DOMAINS}
+		<script
+			defer
+			src={`${publicEnv.PUBLIC_UMAMI_URL}/script.js`}
+			data-website-id={publicEnv.PUBLIC_UMAMI_WEBSITE_ID}
+			data-domains={publicEnv.PUBLIC_UMAMI_DOMAINS}
+			data-exclude-search="true"
+			data-exclude-hash="true"
+			data-do-not-track="true"
+		></script>
+	{/if}
 	<link rel="icon" type="image/svg+xml" href={favicon} />
 	<link rel="alternate" type="application/rss+xml" title="Kertfodrász RSS Feed" href="/rss.xml" />
 	<meta
